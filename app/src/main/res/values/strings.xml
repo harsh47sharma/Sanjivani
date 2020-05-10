@@ -6,4 +6,6 @@
     <string name="send_otp_button">Send OTP</string>
     <string name="register_button">register</string>
     <string name="splash_image_content_description">splash screen image</string>
+    <string name="google_sign_up_text">Google Sign Up Page</string>
+    <string name="sign_out_button">Sign Out</string>
 </resources>
