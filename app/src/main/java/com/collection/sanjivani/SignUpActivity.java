@@ -52,7 +52,6 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String codeEnteredByUser = otpEditText.getText().toString().trim();
-                PhoneSignUpProgressBar.setVisibility(View.VISIBLE);
                 verifyUserOTP(codeEnteredByUser);
             }
         });
@@ -73,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
         else {
+            PhoneSignUpProgressBar.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(), "OTP send to " + phoneNumber, Toast.LENGTH_LONG).show();
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
                     phoneNumber,        // Phone number to verify
@@ -89,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
             String autoGetCode = phoneAuthCredential.getSmsCode();
             if(autoGetCode != null){
-                PhoneSignUpProgressBar.setVisibility(View.VISIBLE);
+                otpEditText.setText(autoGetCode);
                 verifyUserOTP(autoGetCode);
             }
         }
@@ -130,9 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(SignUpActivity.this, GoogleSignUpActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
-                            finish();
                         } else {
                             if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
                                 Toast.makeText(getApplicationContext(), "incorrect code", Toast.LENGTH_LONG).show();
@@ -143,5 +141,14 @@ public class SignUpActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent = new Intent(SignUpActivity.this, GoogleSignUpActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
 
+    }
 }
