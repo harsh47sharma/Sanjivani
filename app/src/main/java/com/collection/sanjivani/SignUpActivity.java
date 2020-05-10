@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class SignUpActivity extends AppCompatActivity {
 
     EditText phoneNumberEditText, otpEditText;
+    ProgressBar PhoneSignUpProgressBar;
     FirebaseAuth mAuth;
     String codeSentToUser;
     String countryCode = "+91 ";
@@ -33,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mAuth = FirebaseAuth.getInstance();
+        PhoneSignUpProgressBar = findViewById(R.id.phoneSignUpProgressBar);
+
 
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
         otpEditText = findViewById(R.id.otpEditText);
@@ -40,7 +44,6 @@ public class SignUpActivity extends AppCompatActivity {
         findViewById(R.id.sendOTPButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "otp sent", Toast.LENGTH_LONG).show();
                 sendVerificationCode();
             }
         });
@@ -48,39 +51,47 @@ public class SignUpActivity extends AppCompatActivity {
         findViewById(R.id.registerButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verifyUserOTP();
+                String codeEnteredByUser = otpEditText.getText().toString().trim();
+                PhoneSignUpProgressBar.setVisibility(View.VISIBLE);
+                verifyUserOTP(codeEnteredByUser);
             }
         });
+
     }
     private void sendVerificationCode(){
 
         String rawPhoneNumber = phoneNumberEditText.getText().toString().trim();
         String phoneNumber = countryCode + rawPhoneNumber;
-        Toast.makeText(getApplicationContext(), phoneNumber, Toast.LENGTH_LONG).show();
         if(phoneNumber.isEmpty()){
             phoneNumberEditText.setError("Phone number is required");
             phoneNumberEditText.requestFocus();
             return;
         }
-        if(phoneNumber.length() > 14 || phoneNumber.length() < 10){
+        else if(phoneNumber.length()!=14){
             phoneNumberEditText.setError("Invalid Phone Number");
             phoneNumberEditText.requestFocus();
             return;
         }
-
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumber,        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                mCallbacks);        // OnVerificationStateChangedCallbacks
+        else {
+            Toast.makeText(getApplicationContext(), "OTP send to " + phoneNumber, Toast.LENGTH_LONG).show();
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                    phoneNumber,        // Phone number to verify
+                    60,                 // Timeout duration
+                    TimeUnit.SECONDS,   // Unit of timeout
+                    this,               // Activity (for callback binding)
+                    mCallbacks);        // OnVerificationStateChangedCallbacks
+        }
     }
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         @Override
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-
+            String autoGetCode = phoneAuthCredential.getSmsCode();
+            if(autoGetCode != null){
+                PhoneSignUpProgressBar.setVisibility(View.VISIBLE);
+                verifyUserOTP(autoGetCode);
+            }
         }
 
         @Override
@@ -95,15 +106,21 @@ public class SignUpActivity extends AppCompatActivity {
         }
     };
 
-    private void verifyUserOTP(){
-        String codeEnteredByUser = otpEditText.getText().toString();
+    private void verifyUserOTP(String codeEnteredByUser){
         if(codeEnteredByUser.isEmpty()){
             otpEditText.setError("OTP cannot be null");
             otpEditText.requestFocus();
             return;
         }
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSentToUser, codeEnteredByUser);
-        signInWithPhoneAuthCredential(credential);
+        else if(codeEnteredByUser.length() != 6){
+            otpEditText.setError("Invalid OTP");
+            otpEditText.requestFocus();
+            return;
+        }
+        else{
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSentToUser, codeEnteredByUser);
+            signInWithPhoneAuthCredential(credential);
+        }
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -113,6 +130,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Intent intent = new Intent(SignUpActivity.this, GoogleSignUpActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             finish();
                         } else {
