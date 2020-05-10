@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sanjivani</string>
+    <string name="splash_screen_heading">Register Phone Number</string>
+    <string name="phone_number_hint">Enter Phone Number</string>
+    <string name="opt_hint">Enter OTP</string>
+    <string name="send_otp_button">Send OTP</string>
+    <string name="register_button">register</string>
+    <string name="splash_image_content_description">splash screen image</string>
+</resources>

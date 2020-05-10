@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "280535052204",
+    "firebase_url": "https://sanjivani-cf6ee.firebaseio.com",
+    "project_id": "sanjivani-cf6ee",
+    "storage_bucket": "sanjivani-cf6ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280535052204:android:cbb650cc4cca5dc2bc9409",
+        "android_client_info": {
+          "package_name": "com.collection.med.sanjivani"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280535052204-2koq853gv6mplq3a0qh6gs1i1fcseghh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.collection.med.sanjivani",
+            "certificate_hash": "4df54643681b25e3b33588a4a93ee6870ff869d6"
+          }
+        },
+        {
+          "client_id": "280535052204-h8f3s5pqpm1firo8r1vc6r2hd5gi46tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD32e4pJXSl4x74VzO6VtWWJ0hYp3Cvido"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280535052204-h8f3s5pqpm1firo8r1vc6r2hd5gi46tg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
