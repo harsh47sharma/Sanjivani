@@ -19,10 +19,12 @@
 
     <Button
         android:id="@+id/signOutButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="92dp"
-        android:text=""
+        android:text="Go back"
+        android:textSize="20dp"
+        android:background="@drawable/my_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
