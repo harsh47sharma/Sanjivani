@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText phoneNumberEditText, otpEditText;
     ProgressBar PhoneSignUpProgressBar;
     FirebaseAuth mAuth;
+    Button registerButton;
     String codeSentToUser;
     String countryCode = "+91 ";
     @Override
@@ -36,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         PhoneSignUpProgressBar = findViewById(R.id.phoneSignUpProgressBar);
-
+        registerButton = findViewById(R.id.registerButton);
 
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
         otpEditText = findViewById(R.id.otpEditText);
@@ -72,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
         else {
+            registerButton.setVisibility(View.VISIBLE);
             PhoneSignUpProgressBar.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(), "OTP send to " + phoneNumber, Toast.LENGTH_LONG).show();
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -124,16 +127,19 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        final String userPhoneNumber = phoneNumberEditText.getText().toString().trim();
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(SignUpActivity.this, GoogleSignUpActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, CaptureUserInformation.class);
+                            intent.putExtra("user_phone_number", userPhoneNumber);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
                             if(task.getException() instanceof FirebaseAuthInvalidCredentialsException){
-                                Toast.makeText(getApplicationContext(), "incorrect code", Toast.LENGTH_LONG).show();
+                                Toast.makeText(SignUpActivity.this, "incorrect code", Toast.LENGTH_LONG).show();
                             }
 
                         }
@@ -145,7 +151,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            Intent intent = new Intent(SignUpActivity.this, GoogleSignUpActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, CaptureUserInformation.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
