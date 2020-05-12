@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button registerButton;
     String codeSentToUser;
+    TextView resendOTP;
     String countryCode = "+91 ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +153,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            Intent intent = new Intent(SignUpActivity.this, CaptureUserInformation.class);
+            Intent intent = new Intent(SignUpActivity.this, NavigatorActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
