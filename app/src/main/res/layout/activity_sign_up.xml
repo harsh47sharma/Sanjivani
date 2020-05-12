@@ -37,9 +37,10 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <EditText
         android:id="@+id/phoneNumberEditText"
@@ -48,14 +49,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:width="0dp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_phone_black_24dp"
         android:drawablePadding="16dp"
         android:ems="10"
-        android:hint="@string/phone_number_hint"
-        android:inputType="phone"
         android:padding="16dp"
+        android:inputType="phone"
+        android:hint="@string/phone_number_hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
