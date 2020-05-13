@@ -84,7 +84,7 @@ public class CaptureUserInformation extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(CaptureUserInformation.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CaptureUserInformation.this, NavigatorActivity.class);
+                Intent intent = new Intent(CaptureUserInformation.this, NavigationActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
 

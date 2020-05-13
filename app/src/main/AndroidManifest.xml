@@ -9,13 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity">
-
-        </activity>
-        <activity android:name=".EditProfileActivity" />
         <activity
-            android:name=".NavigatorActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".NavigationActivity"
+            android:label="@string/title_activity_navigation"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".EditProfileActivity" />
         <activity android:name=".CaptureUserInformation" />
         <activity android:name=".SignUpActivity" />
         <activity
