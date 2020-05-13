@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CaptureUserInformation extends AppCompatActivity {
 
@@ -76,25 +80,49 @@ public class CaptureUserInformation extends AppCompatActivity {
        }
     }
     private void pushUserDataToFireStore(String userName, String userEmail, String userAddress, String userPhoneNumber){
-        CollectionReference dbUsersCollection = db.collection("users");
+        String userId = FirebaseAuth.getInstance().getUid();
+        Map<String, Object> userDetailsObject = new HashMap<>();
+        userDetailsObject.put("UserName", userName);
+        userDetailsObject.put("UserEmail", userEmail);
+        userDetailsObject.put("UserPhoneNumber", userPhoneNumber);
+        userDetailsObject.put("UserAddress", userAddress);
 
-        Users users = new Users(userName, userEmail, userAddress, userPhoneNumber);
+        db.collection("users").document(userId).set(userDetailsObject)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(CaptureUserInformation.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CaptureUserInformation.this, NavigationActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CaptureUserInformation.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
 
-        dbUsersCollection.add(users).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(CaptureUserInformation.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CaptureUserInformation.this, NavigationActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CaptureUserInformation.this, e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+        //        CollectionReference dbUsersCollection = db.collection("users") ;
+//
+//        Users users = new Users(userName, userEmail, userAddress, userPhoneNumber);
+//
+//        dbUsersCollection.add(users).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//            @Override
+//            public void onSuccess(DocumentReference documentReference) {
+//                Toast.makeText(CaptureUserInformation.this, "SignUp Successful", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(CaptureUserInformation.this, NavigationActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(CaptureUserInformation.this, e.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
 }

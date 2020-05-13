@@ -7,10 +7,16 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -25,6 +31,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     Toolbar mToolbar;
+    TextView mNameTextView;
+    TextView mEmailTextView;
+    TextView mPhoneNumberTextView;
+
+    FirebaseFirestore db;
+    DocumentReference getUserDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +47,42 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
 
+        //Setting navigation drawer
+        setUpNavigation();
+
+        View headerView = mNavigationView.getHeaderView(0);
+        mNameTextView = headerView.findViewById(R.id.navHeaderNameTextView);
+        mEmailTextView = headerView.findViewById(R.id.navHeaderEmailTextView);
+        mPhoneNumberTextView = headerView.findViewById(R.id.navHeaderPhoneNumberTextView);
+
+        String userId = FirebaseAuth.getInstance().getUid();
+        db = FirebaseFirestore.getInstance();
+        getUserDetails = db.collection("users").document(userId);
+
+        getUserDetails.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                             String userName = documentSnapshot.getString("UserName");
+                             String userEmail = documentSnapshot.getString("UserEmail");
+                             String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
+
+                             mNameTextView.setText(userName);
+                             mEmailTextView.setText(userEmail);
+                             mPhoneNumberTextView.setText(userPhoneNumber);
+                        }
+                        else{
+                            Toast.makeText(NavigationActivity.this, "User Details not found", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(NavigationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
 
         findViewById(R.id.toastButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +90,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Toast.makeText(NavigationActivity.this, "im in nav act", Toast.LENGTH_LONG).show();
             }
         });
-
-        setUpNavigation();
-
-
-
-
     }
     private void setUpNavigation(){
         setSupportActionBar(mToolbar);
