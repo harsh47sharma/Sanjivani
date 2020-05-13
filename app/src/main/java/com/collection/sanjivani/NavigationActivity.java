@@ -3,6 +3,7 @@ package com.collection.sanjivani;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -83,5 +85,27 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         }
 
         return true;
+    }
+    Boolean isBackPressedTwice = false;
+    @Override
+    public void onBackPressed() {
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else{
+            if(isBackPressedTwice){
+                super.onBackPressed();
+            }
+            else{
+                isBackPressedTwice = true;
+                Toast.makeText(NavigationActivity.this, "Please back again to exit", Toast.LENGTH_LONG).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isBackPressedTwice = false;
+                    }
+                }, 4000);
+            }
+        }
     }
 }
