@@ -64,11 +64,11 @@ public class PhoneLoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        if(FirebaseAuth.getInstance().getCurrentUser() != null){
-//            Intent intent = new Intent(PhoneLoginActivity.this, NavigationActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            startActivity(intent);
-//        }
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent = new Intent(PhoneLoginActivity.this, NavigationActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
 
     }
 }
