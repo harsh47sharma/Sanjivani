@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +49,19 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         //Setting navigation drawer
         setUpNavigation();
 
+        //Setting navigation header text view
+        setNavHeaderTextView();
+
+        //Test button
+        findViewById(R.id.toastButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(NavigationActivity.this, "im in nav act", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void setNavHeaderTextView(){
         View headerView = mNavigationView.getHeaderView(0);
         mNameTextView = headerView.findViewById(R.id.navHeaderNameTextView);
         mEmailTextView = headerView.findViewById(R.id.navHeaderEmailTextView);
@@ -64,13 +76,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
-                             String userName = documentSnapshot.getString("UserName");
-                             String userEmail = documentSnapshot.getString("UserEmail");
-                             String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
+                            String userName = documentSnapshot.getString("UserName");
+                            String userEmail = documentSnapshot.getString("UserEmail");
+                            String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
 
-                             mNameTextView.setText(userName);
-                             mEmailTextView.setText(userEmail);
-                             mPhoneNumberTextView.setText(userPhoneNumber);
+                            mNameTextView.setText(userName);
+                            mEmailTextView.setText(userEmail);
+                            mPhoneNumberTextView.setText(userPhoneNumber);
                         }
                         else{
                             Toast.makeText(NavigationActivity.this, "User Details not found", Toast.LENGTH_LONG).show();
@@ -83,14 +95,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         Toast.makeText(NavigationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
-
-        findViewById(R.id.toastButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(NavigationActivity.this, "im in nav act", Toast.LENGTH_LONG).show();
-            }
-        });
     }
+
     private void setUpNavigation(){
         setSupportActionBar(mToolbar);
         mNavigationView.bringToFront();
@@ -117,7 +123,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             FirebaseAuth.getInstance().signOut();
-                            Intent intent = new Intent(NavigationActivity.this, SignUpActivity.class);
+                            Intent intent = new Intent(NavigationActivity.this, PhoneLoginActivity.class);
                             startActivity(intent);
                         }
                     })
