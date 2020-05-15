@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
 
-    TextView number;
+    TextView userPhoneNumberTextView;
     Button registerButton;
     String userPhoneNumber;
     String codeSentToUser;
@@ -59,8 +59,7 @@ public class VerificationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         PhoneSignUpProgressBar = findViewById(R.id.phoneSignUpProgressBar);
-        number = findViewById(R.id.phone_number);
-        number.setText(userPhoneNumber);
+        userPhoneNumberTextView = findViewById(R.id.phone_number);
         registerButton = findViewById(R.id.registerButton);
 
         pinView = findViewById(R.id.otpPinWidget);
@@ -80,8 +79,8 @@ public class VerificationActivity extends AppCompatActivity {
     private void sendVerificationCode() {
         Intent intent = getIntent();
         userPhoneNumber = intent.getStringExtra("phone_number");
+        userPhoneNumberTextView.setText(userPhoneNumber);
         String phoneNumber = countryCode + userPhoneNumber;
-        Toast.makeText(getApplicationContext(), "OTP send to " + phoneNumber, Toast.LENGTH_LONG).show();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
                 60,                 // Timeout duration
@@ -116,11 +115,13 @@ public class VerificationActivity extends AppCompatActivity {
 
     private void verifyUserOTP(String codeEnteredByUser) {
         if (codeEnteredByUser.isEmpty()) {
-            pinView.setValue("");
+            Animation example= AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake_pin_view);
+            pinView.startAnimation(example);
             Toast.makeText(VerificationActivity.this, "OTP cannot be null", Toast.LENGTH_LONG).show();
             return;
         } else if (codeEnteredByUser.length() != 6) {
-            pinView.setValue("");
+            Animation example= AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake_pin_view);
+            pinView.startAnimation(example);
             Toast.makeText(VerificationActivity.this, "OTP should be of length 6", Toast.LENGTH_LONG).show();
             return;
         } else {
