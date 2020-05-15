@@ -3,16 +3,21 @@ package com.collection.sanjivani;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.chaos.view.PinView;
+import com.goodiebag.pinview.Pinview;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,14 +38,14 @@ import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
 
-    EditText otpEditText;
     TextView number;
     Button registerButton;
     String userPhoneNumber;
     String codeSentToUser;
+    String codeEnteredByUser;
     ProgressBar PhoneSignUpProgressBar;
     String countryCode = "+91 ";
-    private PinView pinView;
+    Pinview pinView;
 
     FirebaseFirestore db;
     CollectionReference getUserDetails;
@@ -64,7 +69,7 @@ public class VerificationActivity extends AppCompatActivity {
         findViewById(R.id.registerButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String codeEnteredByUser = pinView.getText().toString().trim();
+                codeEnteredByUser = pinView.getValue().trim();
                 verifyUserOTP(codeEnteredByUser);
 
             }
@@ -92,7 +97,7 @@ public class VerificationActivity extends AppCompatActivity {
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
             String autoGetCode = phoneAuthCredential.getSmsCode();
             if (autoGetCode != null) {
-                otpEditText.setText(autoGetCode);
+                pinView.setValue(autoGetCode);
                 verifyUserOTP(autoGetCode);
             }
         }
@@ -111,12 +116,12 @@ public class VerificationActivity extends AppCompatActivity {
 
     private void verifyUserOTP(String codeEnteredByUser) {
         if (codeEnteredByUser.isEmpty()) {
-            otpEditText.setError("OTP cannot be null");
-            otpEditText.requestFocus();
+            pinView.setValue("");
+            Toast.makeText(VerificationActivity.this, "OTP cannot be null", Toast.LENGTH_LONG).show();
             return;
         } else if (codeEnteredByUser.length() != 6) {
-            otpEditText.setError("Invalid OTP");
-            otpEditText.requestFocus();
+            pinView.setValue("");
+            Toast.makeText(VerificationActivity.this, "OTP should be of length 6", Toast.LENGTH_LONG).show();
             return;
         } else {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSentToUser, codeEnteredByUser);
@@ -125,6 +130,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        final Context context = this;
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -136,9 +142,12 @@ public class VerificationActivity extends AppCompatActivity {
                         }
                         else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                otpEditText.setError("Incorrect OTP");
-                                otpEditText.setText("");
-                                otpEditText.requestFocus();
+                                Toast.makeText(VerificationActivity.this, "incorrect OTP", Toast.LENGTH_LONG).show();
+                                for (int i = 0;i < pinView.getPinLength();i++) {
+                                    pinView.onKey(pinView.getFocusedChild(), KeyEvent.KEYCODE_DEL, new KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DEL));
+                                }
+                                Animation example= AnimationUtils.loadAnimation(context, R.anim.shake_pin_view);
+                                pinView.startAnimation(example);
                             }
                         }
                     }
@@ -156,13 +165,11 @@ public class VerificationActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(!queryDocumentSnapshots.isEmpty()){
-                            Log.d("is okay", "i exist");
                             Intent intent = new Intent(VerificationActivity.this, NavigationActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         }
                         else{
-                            Log.d("is okay", "im not existing");
                             Intent intent = new Intent(VerificationActivity.this, CaptureUserInformation.class);
                             intent.putExtra("user_phone_number", userPhoneNumber);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

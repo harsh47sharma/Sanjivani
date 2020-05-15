@@ -34,6 +34,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     TextView mEmailTextView;
     TextView mPhoneNumberTextView;
 
+    Boolean isBackPressedTwice = false;
+
     FirebaseFirestore db;
     DocumentReference getUserDetails;
 
@@ -47,18 +49,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mToolbar = findViewById(R.id.toolbar);
 
         //Setting navigation drawer
-        setUpNavigation();
+        setUpNavigationDrawer();
 
         //Setting navigation header text view
         setNavHeaderTextView();
 
-        //Test button
-        findViewById(R.id.toastButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(NavigationActivity.this, "im in nav act", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
     private void setNavHeaderTextView(){
@@ -97,7 +92,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 });
     }
 
-    private void setUpNavigation(){
+    private void setUpNavigationDrawer(){
         setSupportActionBar(mToolbar);
         mNavigationView.bringToFront();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -134,7 +129,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         return true;
     }
-    Boolean isBackPressedTwice = false;
     @Override
     public void onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){

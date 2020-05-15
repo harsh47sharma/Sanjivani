@@ -9,20 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SearchDrugActivity"></activity>
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".SettingsActivity">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SettingsActivity"></activity>
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".CaptureUserInformation" />
         <activity android:name=".PhoneLoginActivity" />
         <activity android:name=".VerificationActivity" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
