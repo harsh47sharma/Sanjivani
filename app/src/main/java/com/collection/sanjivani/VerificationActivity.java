@@ -10,8 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import com.chaos.view.PinView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,11 +34,13 @@ import java.util.concurrent.TimeUnit;
 public class VerificationActivity extends AppCompatActivity {
 
     EditText otpEditText;
+    TextView number;
     Button registerButton;
     String userPhoneNumber;
     String codeSentToUser;
     ProgressBar PhoneSignUpProgressBar;
     String countryCode = "+91 ";
+    private PinView pinView;
 
     FirebaseFirestore db;
     CollectionReference getUserDetails;
@@ -51,16 +54,19 @@ public class VerificationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         PhoneSignUpProgressBar = findViewById(R.id.phoneSignUpProgressBar);
+        number = findViewById(R.id.phone_number);
+        number.setText(userPhoneNumber);
         registerButton = findViewById(R.id.registerButton);
 
-        otpEditText = findViewById(R.id.otpEditText);
+        pinView = findViewById(R.id.otpPinWidget);
         sendVerificationCode();
 
         findViewById(R.id.registerButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String codeEnteredByUser = otpEditText.getText().toString().trim();
+                String codeEnteredByUser = pinView.getText().toString().trim();
                 verifyUserOTP(codeEnteredByUser);
+
             }
         });
 

@@ -33,7 +33,6 @@ public class PhoneLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_login);
-
         phoneNumberEditText = findViewById(R.id.phoneNumberEditText);
 
         findViewById(R.id.sendOTPButton).setOnClickListener(new View.OnClickListener() {
