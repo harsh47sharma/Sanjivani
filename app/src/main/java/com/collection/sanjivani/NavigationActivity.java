@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     TextView mNameTextView;
     TextView mEmailTextView;
     TextView mPhoneNumberTextView;
-
     Boolean isBackPressedTwice = false;
 
     FirebaseFirestore db;
@@ -47,6 +47,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
+
+        findViewById(R.id.toastButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NavigationActivity.this, SearchDrugActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Setting navigation drawer
         setUpNavigationDrawer();
