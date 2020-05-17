@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +18,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -33,7 +33,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     Toolbar mToolbar;
     TextView mNameTextView;
     TextView mEmailTextView;
-    TextView mPhoneNumberTextView;
+    //TextView mPhoneNumberTextView;
     Boolean isBackPressedTwice = false;
 
     FirebaseFirestore db;
@@ -48,10 +48,16 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
 
-        findViewById(R.id.toastButton).setOnClickListener(new View.OnClickListener() {
+        //Setting navigation drawer
+        setUpNavigationDrawer();
+
+        //Setting navigation header text view
+        setNavHeaderTextView();
+
+        findViewById(R.id.searchbarEditText).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NavigationActivity.this, SearchDrugActivity.class);
+                Intent intent= new Intent(NavigationActivity.this,SearchDrugActivity.class);
                 startActivity(intent);
             }
         });
@@ -64,19 +70,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
-        //Setting navigation drawer
-        setUpNavigationDrawer();
-
-        //Setting navigation header text view
-        setNavHeaderTextView();
-
     }
 
     private void setNavHeaderTextView(){
         View headerView = mNavigationView.getHeaderView(0);
         mNameTextView = headerView.findViewById(R.id.navHeaderNameTextView);
         mEmailTextView = headerView.findViewById(R.id.navHeaderEmailTextView);
-        mPhoneNumberTextView = headerView.findViewById(R.id.navHeaderPhoneNumberTextView);
+        //mPhoneNumberTextView = headerView.findViewById(R.id.navHeaderPhoneNumberTextView);
 
         String userId = FirebaseAuth.getInstance().getUid();
         db = FirebaseFirestore.getInstance();
@@ -89,11 +89,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         if (documentSnapshot.exists()){
                             String userName = documentSnapshot.getString("UserName");
                             String userEmail = documentSnapshot.getString("UserEmail");
-                            String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
+                            //String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
 
                             mNameTextView.setText(userName);
                             mEmailTextView.setText(userEmail);
-                            mPhoneNumberTextView.setText(userPhoneNumber);
+                            //mPhoneNumberTextView.setText(userPhoneNumber);
                         }
                         else{
                             Toast.makeText(NavigationActivity.this, "User Details not found", Toast.LENGTH_LONG).show();

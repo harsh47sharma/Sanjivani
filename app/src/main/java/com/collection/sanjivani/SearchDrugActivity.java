@@ -35,6 +35,7 @@ public class SearchDrugActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_drug);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         searchBoxEditText = findViewById(R.id.searchBoxEditText);
         recyclerView = findViewById(R.id.searchActivityRecyclerView);
