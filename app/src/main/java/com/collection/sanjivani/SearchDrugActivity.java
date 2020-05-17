@@ -1,20 +1,16 @@
 package com.collection.sanjivani;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,11 +27,9 @@ public class SearchDrugActivity extends AppCompatActivity {
     CollectionReference drugCollectionReference;
     FirebaseFirestore db;
 
-    List<String> medNameArrayList;
-    List<String> medPriceArrayList;
-    List<String> medAvailabilityArrayList;
+    List<MedInfo> medInfoArrayList;
 
-    SearchAdapter searchAdapter;
+    SearchDrugAdapter searchDrugAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +42,11 @@ public class SearchDrugActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         drugCollectionReference = db.collection("drugInfoDB");
 
-        medNameArrayList = new ArrayList<>();
-        medPriceArrayList = new ArrayList<>();
-        medAvailabilityArrayList = new ArrayList<>();
+        medInfoArrayList = new ArrayList<>();
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));
 
         searchBoxEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,29 +76,29 @@ public class SearchDrugActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                        medNameArrayList.clear();
-                        medPriceArrayList.clear();
-                        medAvailabilityArrayList.clear();
+                        medInfoArrayList.clear();
                         recyclerView.removeAllViews();
 
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                             MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
 
-                            String medName = medInfo.getMedName();
-                            String medPrice = medInfo.getMedPrice();
-                            String medAvailability = medInfo.getMedAvailability();
-
-                            if(medName.contains(stringSearchedByUser.toLowerCase())){
-                                medNameArrayList.add(medName);
-                                medPriceArrayList.add(medPrice);
-                                medAvailabilityArrayList.add(medAvailability);
+                            if(medInfo.getMedName().contains(stringSearchedByUser.toLowerCase())){
+                                medInfoArrayList.add(medInfo);
                             }
                         }
 
-                        searchAdapter = new SearchAdapter(SearchDrugActivity.this, medNameArrayList, medPriceArrayList, medAvailabilityArrayList);
-                        recyclerView.setAdapter(searchAdapter);
+                        searchDrugAdapter = new SearchDrugAdapter(SearchDrugActivity.this, medInfoArrayList);
+                        recyclerView.setAdapter(searchDrugAdapter);
+
+                        searchDrugAdapter.setOnMedClickListener(new SearchDrugAdapter.OnMedClickListener() {
+                            @Override
+                            public void onMedClick(int position) {
+                                Intent intent = new Intent(SearchDrugActivity.this, DrugInformationActivity.class);
+                                intent.putExtra("items_object", medInfoArrayList.get(position));
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
     }
-
 }

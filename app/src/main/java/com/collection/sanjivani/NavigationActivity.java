@@ -56,6 +56,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
+        findViewById(R.id.addToCartButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NavigationActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //Setting navigation drawer
         setUpNavigationDrawer();
 
