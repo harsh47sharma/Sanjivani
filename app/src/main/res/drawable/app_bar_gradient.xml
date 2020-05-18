@@ -3,6 +3,11 @@
     android:shape="rectangle"
     android:useLevel="false">
 
+    <corners
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp"
+        />
+
     <gradient
         android:angle="360"
         android:type="linear"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#66CCCD</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimaryDark">#66CCCD</color>
     <color name="colorAccent">#0099ff</color>
 
     <color name="toolgradientStartColor">#82D8E3</color>
@@ -9,4 +9,7 @@
 
     <color name="buttonGradientStartColor">#82D8E3</color>
     <color name="buttonGradientEndColor">#0099ff</color>
+
+    <color name="availableColor">#48FF00</color>
+    <color name="priceColor">#3F51B5</color>
 </resources>

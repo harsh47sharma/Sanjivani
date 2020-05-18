@@ -18,6 +18,7 @@ public class DrugInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drug_information);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mMedNameTextView = findViewById(R.id.infoPageMedNameTextView);
         mMedDescriptionTextView = findViewById(R.id.infoPageMedDescriptionTextView);
