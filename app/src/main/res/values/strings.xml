@@ -16,7 +16,7 @@
     <string name="google_sign_up_text">Google Sign Up Page</string>
     <string name="sign_out_button">Sign Out</string>
     <string name="resend_otp">Re-Send OTP</string>
-    <string name="capture_user_info_heading">One Last Step -</string>
+    <string name="capture_user_info_heading">One Last Step...</string>
     <string name="user_info_name">Enter your Full Name</string>
     <string name="user_info_email">Enter your email address</string>
     <string name="user_info_address">Enter your address</string>
