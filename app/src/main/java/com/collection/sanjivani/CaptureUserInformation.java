@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -25,6 +23,7 @@ public class CaptureUserInformation extends AppCompatActivity {
     EditText mUserName;
     EditText mUserEmail;
     EditText mUserAddress;
+    EditText mUserCity, mUserState, mUserPinCode;
     ProgressBar mUserInfoProgressBar;
 
     private FirebaseFirestore db;
@@ -40,7 +39,10 @@ public class CaptureUserInformation extends AppCompatActivity {
 
         mUserName = findViewById(R.id.userNameEditText);
         mUserEmail = findViewById(R.id.userEmailEditText);
-        mUserAddress = findViewById(R.id.userAddressEditText);
+        mUserAddress = findViewById(R.id.addressEditText);
+        mUserCity = findViewById(R.id.cityEditText);
+        mUserState = findViewById(R.id.stateEditText);
+        mUserPinCode = findViewById(R.id.pinCodeEditText);
 
         findViewById(R.id.createProfileButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,18 +50,21 @@ public class CaptureUserInformation extends AppCompatActivity {
                 String userName = mUserName.getText().toString();
                 String userEmail = mUserEmail.getText().toString();
                 String userAddress = mUserAddress.getText().toString();
+                String userCity = mUserCity.getText().toString();
+                String userState = mUserState.getText().toString();
+                String userPinCode = mUserPinCode.getText().toString();
                 Intent intent = getIntent();
                 String userPhoneNumber = intent.getStringExtra("user_phone_number");
 
-                if(onValidationSuccess(userName, userEmail, userAddress)){
+                if(onValidationSuccess(userName, userEmail, userAddress, userCity, userState, userPinCode)){
                     mUserInfoProgressBar.setVisibility(View.VISIBLE);
-                    pushUserDataToFireStore(userName, userEmail, userAddress, userPhoneNumber);
+                    pushUserDataToFireStore(userName, userEmail, userAddress, userPhoneNumber, userCity, userState, userPinCode);
                 }
             }
         });
     }
 
-    private Boolean onValidationSuccess(String userName, String userEmail, String userAddress){
+    private Boolean onValidationSuccess(String userName, String userEmail, String userAddress, String userCity, String userState, String userPinCode){
        if(userName.isEmpty()){
            mUserName.setError("Name field cannot be empty");
            mUserName.requestFocus();
@@ -75,17 +80,35 @@ public class CaptureUserInformation extends AppCompatActivity {
            mUserAddress.requestFocus();
            return false;
        }
+       else if(userCity.isEmpty()){
+           mUserCity.setError("city Field cannot be empty");
+           mUserCity.requestFocus();
+           return false;
+       }
+       else if(userState.isEmpty()){
+           mUserState.setError("State Field cannot be empty");
+           mUserState.requestFocus();
+           return false;
+       }
+       else if(userPinCode.isEmpty()){
+           mUserPinCode.setError("pin code Field cannot be empty");
+           mUserPinCode.requestFocus();
+           return false;
+       }
        else{
            return true;
        }
     }
-    private void pushUserDataToFireStore(String userName, String userEmail, String userAddress, String userPhoneNumber){
+    private void pushUserDataToFireStore(String userName, String userEmail, String userAddress, String userPhoneNumber, String userCity, String userState, String userPinCode){
         String userId = FirebaseAuth.getInstance().getUid();
         Map<String, Object> userDetailsObject = new HashMap<>();
         userDetailsObject.put("UserName", userName);
         userDetailsObject.put("UserEmail", userEmail);
         userDetailsObject.put("UserPhoneNumber", userPhoneNumber);
         userDetailsObject.put("UserAddress", userAddress);
+        userDetailsObject.put("userCity", userCity);
+        userDetailsObject.put("userState", userState);
+        userDetailsObject.put("userPinCode", userPinCode);
 
         db.collection("users").document(userId).set(userDetailsObject)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

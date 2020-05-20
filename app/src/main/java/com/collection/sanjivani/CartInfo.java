@@ -2,15 +2,14 @@ package com.collection.sanjivani;
 
 import java.io.Serializable;
 
-public class MedInfo implements Serializable {
-    public String medName, medAvailability, medPrice;
-    public String medDescription, medQuantity;
+public class CartInfo implements Serializable {
+    public String medName, medPrice, medQuantity, medItemCount;
 
-    public MedInfo(){
+    public CartInfo() {
 
     }
 
-    public MedInfo(String medName, String medQuantity, String medPrice) {
+    public CartInfo(String medName, String medQuantity, String medPrice) {
         this.medName = medName;
         this.medQuantity = medQuantity;
         this.medPrice = medPrice;
@@ -24,14 +23,6 @@ public class MedInfo implements Serializable {
         this.medName = medName;
     }
 
-    public String getMedAvailability() {
-        return medAvailability;
-    }
-
-    public void setMedAvailability(String medAvailability) {
-        this.medAvailability = medAvailability;
-    }
-
     public String getMedPrice() {
         return medPrice;
     }
@@ -40,19 +31,19 @@ public class MedInfo implements Serializable {
         this.medPrice = medPrice;
     }
 
-    public String getMedDescription() {
-        return medDescription;
-    }
-
-    public void setMedDescription(String medDescription) {
-        this.medDescription = medDescription;
-    }
-
     public String getMedQuantity() {
         return medQuantity;
     }
 
     public void setMedQuantity(String medQuantity) {
         this.medQuantity = medQuantity;
+    }
+
+    public String getMedItemCount() {
+        return medItemCount;
+    }
+
+    public void setMedItemCount(String medItemCount) {
+        this.medItemCount = medItemCount;
     }
 }

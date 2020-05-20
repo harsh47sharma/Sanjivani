@@ -33,7 +33,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     Toolbar mToolbar;
     TextView mNameTextView;
     TextView mEmailTextView;
-    //TextView mPhoneNumberTextView;
     Boolean isBackPressedTwice = false;
 
     FirebaseFirestore db;
@@ -47,6 +46,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
+
+        mDrawerLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         //Setting navigation drawer
         setUpNavigationDrawer();
@@ -89,11 +93,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         if (documentSnapshot.exists()){
                             String userName = documentSnapshot.getString("UserName");
                             String userEmail = documentSnapshot.getString("UserEmail");
-                            //String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
 
                             mNameTextView.setText(userName);
                             mEmailTextView.setText(userEmail);
-                            //mPhoneNumberTextView.setText(userPhoneNumber);
                         }
                         else{
                             Toast.makeText(NavigationActivity.this, "User Details not found", Toast.LENGTH_LONG).show();

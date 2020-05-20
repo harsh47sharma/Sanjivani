@@ -1,6 +1,7 @@
 package com.collection.sanjivani;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,8 +47,9 @@ public class SearchDrugActivity extends AppCompatActivity {
         medInfoArrayList = new ArrayList<>();
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(SearchDrugActivity.this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         searchBoxEditText.addTextChangedListener(new TextWatcher() {
             @Override

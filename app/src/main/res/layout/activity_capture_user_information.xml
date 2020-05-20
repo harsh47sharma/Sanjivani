@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/userNameEditText" />
 
     <EditText
-        android:id="@+id/userAddressEditText"
+        android:id="@+id/addressEditText"
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:layout_marginStart="32dp"
@@ -113,7 +113,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userAddressEditText"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <ProgressBar
         android:id="@+id/userInfoProgressBar"
@@ -125,6 +125,47 @@
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@+id/createProfileButton" />
+
+    <EditText
+        android:id="@+id/cityEditText"
+        android:layout_width="121dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="60dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/createProfileButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userAddressEditText"
+        app:layout_constraintVertical_bias="0.812" />
+
+    <EditText
+        android:id="@+id/stateEditText"
+        android:layout_width="174dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/pinCodeEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userAddressEditText" />
+
+    <EditText
+        android:id="@+id/pinCodeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.722"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userAddressEditText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
