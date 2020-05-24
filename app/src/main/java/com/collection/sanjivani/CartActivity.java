@@ -84,15 +84,19 @@ public class CartActivity extends AppCompatActivity {
         findViewById(R.id.checkOutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CartActivity.this, PlaceOrderActivity.class);
-                intent.putExtra("total_payable", mCartItemTotalPrice);
-                startActivity(intent);
+                if(mCartArrayList.isEmpty()){
+                    Toast.makeText(CartActivity.this, "Cannot proceed, cart is empty", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent intent = new Intent(CartActivity.this, PlaceOrderActivity.class);
+                    intent.putExtra("total_payable", mCartItemTotalPrice);
+                    startActivity(intent);
+                }
             }
         });
     }
 
     private void setAdapter() {
-        String userID = FirebaseAuth.getInstance().getUid();
 
         userCartDocumentReference.collection("userCart").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -194,4 +198,9 @@ public class CartActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CartActivity.this, NavigationActivity.class);
+        startActivity(intent);
+    }
 }

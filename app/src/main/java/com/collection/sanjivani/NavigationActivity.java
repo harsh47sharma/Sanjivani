@@ -2,8 +2,10 @@ package com.collection.sanjivani;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -26,6 +29,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout mDrawerLayout;
@@ -33,6 +41,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     Toolbar mToolbar;
     TextView mNameTextView;
     TextView mEmailTextView;
+    TextView mPhoneNumberTextView;
     Boolean isBackPressedTwice = false;
 
     FirebaseFirestore db;
@@ -46,6 +55,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
+
+
 
         mDrawerLayout.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
@@ -80,7 +91,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         View headerView = mNavigationView.getHeaderView(0);
         mNameTextView = headerView.findViewById(R.id.navHeaderNameTextView);
         mEmailTextView = headerView.findViewById(R.id.navHeaderEmailTextView);
-        //mPhoneNumberTextView = headerView.findViewById(R.id.navHeaderPhoneNumberTextView);
+        mPhoneNumberTextView = headerView.findViewById(R.id.navHeaderPhoneNumberTextView);
 
         String userId = FirebaseAuth.getInstance().getUid();
         db = FirebaseFirestore.getInstance();
@@ -93,9 +104,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         if (documentSnapshot.exists()){
                             String userName = documentSnapshot.getString("UserName");
                             String userEmail = documentSnapshot.getString("UserEmail");
-
+                            String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
                             mNameTextView.setText(userName);
                             mEmailTextView.setText(userEmail);
+                            mPhoneNumberTextView.setText(userPhoneNumber);
                         }
                         else{
                             Toast.makeText(NavigationActivity.this, "User Details not found", Toast.LENGTH_LONG).show();
@@ -128,6 +140,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         else if(item.getItemId() == R.id.nav_settings){
             Intent intentEditProfile = new Intent(NavigationActivity.this,SettingsActivity.class);
             startActivity(intentEditProfile);
+        }
+        else if (item.getItemId() == R.id.nav_uploadPrescription){
+            Intent intentUploadPrescription = new Intent(NavigationActivity.this, UploadPrescriptionActivity.class);
+            startActivity(intentUploadPrescription);
+        }
+        else if (item.getItemId() == R.id.nav_my_orders){
+            Intent intentMyOrders = new Intent(NavigationActivity.this, MyOrdersActivity.class);
+            startActivity(intentMyOrders);
         }
         else if(item.getItemId() == R.id.nav_logout){
             AlertDialog.Builder builder = new AlertDialog.Builder(NavigationActivity.this);

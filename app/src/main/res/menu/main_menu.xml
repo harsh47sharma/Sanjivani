@@ -2,12 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:title="Upload Prescription">
+        <menu>
+            <item
+                android:id="@+id/nav_uploadPrescription"
+                android:icon="@drawable/nav_logout_icon"
+                android:title="Upload Prescription" />
+        </menu>
+    </item>
+
     <item android:title="Edit Profile">
         <menu>
             <item
                 android:id="@+id/nav_edit_profile"
                 android:icon="@drawable/nav_edit_profile_icon"
                 android:title="Edit Profile" />
+        </menu>
+    </item>
+
+    <item android:title="My Orders">
+        <menu>
+            <item
+                android:id="@+id/nav_my_orders"
+                android:icon="@drawable/nav_logout_icon"
+                android:title="My Orders" />
         </menu>
     </item>
 

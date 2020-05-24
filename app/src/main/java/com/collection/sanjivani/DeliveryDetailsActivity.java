@@ -24,6 +24,7 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
     EditText mUserCity, mUserState, mUserPinCode;
     ProgressBar mProgressBar;
     FirebaseFirestore db;
+    float totalAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +35,14 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
         mUserAddress = findViewById(R.id.deliveryAddress1EditText);
         mUserCity = findViewById(R.id.deliveryUserCityEditText);
         mUserState = findViewById(R.id.deliveryUserStateEditText);
-        mUserPinCode = findViewById(R.id.emailEditText);
+        mUserPinCode = findViewById(R.id.deliveryUserPinCodeEditText);
 
         mProgressBar = findViewById(R.id.deliveryProgressBar);
 
         db = FirebaseFirestore.getInstance();
+
+        Intent intent = getIntent();
+        totalAmount = intent.getFloatExtra("total_payable", totalAmount);
 
 
         findViewById(R.id.saveAddressButton).setOnClickListener(new View.OnClickListener() {
@@ -97,7 +101,7 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(DeliveryDetailsActivity.this, "Address updated successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(DeliveryDetailsActivity.this, PlaceOrderActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("total_payable", totalAmount);
                         startActivity(intent);
                     }
                 })
@@ -107,5 +111,10 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
                         Toast.makeText(DeliveryDetailsActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DeliveryDetailsActivity.this, PlaceOrderActivity.class);
+        startActivity(intent);
     }
 }

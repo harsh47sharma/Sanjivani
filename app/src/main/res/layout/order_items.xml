@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/orderIdTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="order id"
+        app:layout_constraintBottom_toTopOf="@+id/orderTotalAmountTextView"
+        app:layout_constraintEnd_toStartOf="@+id/orderPlacedDateTextView"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22" />
+
+    <TextView
+        android:id="@+id/orderPlacedDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="placed date"
+        app:layout_constraintBottom_toTopOf="@+id/orderTotalAmountTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/orderPlacedTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="256dp"
+        android:text="placed time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/orderIdTextView"
+        app:layout_constraintTop_toBottomOf="@+id/orderPlacedDateTextView"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <TextView
+        android:id="@+id/orderTotalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="total amount"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/orderStatusTextView"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.242" />
+
+    <TextView
+        android:id="@+id/orderStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="order status"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.594"
+        app:layout_constraintStart_toEndOf="@+id/orderIdTextView"
+        app:layout_constraintTop_toBottomOf="@+id/orderPlacedTimeTextView"
+        app:layout_constraintVertical_bias="0.122" />
+</androidx.constraintlayout.widget.ConstraintLayout>

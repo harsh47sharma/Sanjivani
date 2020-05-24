@@ -57,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@+id/delivryAddress">
 
             <TextView
-                android:id="@+id/nameOfUser"
+                android:id="@+id/userNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerta"
@@ -68,7 +68,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/userAddressTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerta"
@@ -76,11 +76,11 @@
                 android:textColor="#8A8A8A"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/nameOfUser"
-                app:layout_constraintTop_toBottomOf="@+id/nameOfUser" />
+                app:layout_constraintStart_toStartOf="@+id/userNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/userCityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerta"
@@ -88,11 +88,11 @@
                 android:textColor="#8A8A8A"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintStart_toStartOf="@+id/userAddressTextView"
+                app:layout_constraintTop_toBottomOf="@+id/userAddressTextView" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/userState_PinCodeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerta"
@@ -100,11 +100,11 @@
                 android:textColor="#8A8A8A"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintStart_toStartOf="@+id/userCityTextView"
+                app:layout_constraintTop_toBottomOf="@+id/userCityTextView" />
 
             <TextView
-                android:id="@+id/UserMobileNo"
+                android:id="@+id/userPhoneNumberTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerta"
@@ -112,11 +112,11 @@
                 android:textColor="#8A8A8A"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/textView13"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintStart_toStartOf="@+id/userState_PinCodeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/userState_PinCodeTextView" />
 
             <TextView
-                android:id="@+id/emailOfUser"
+                android:id="@+id/userEmailTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/allerta"
@@ -124,8 +124,8 @@
                 android:textColor="#8A8A8A"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                app:layout_constraintStart_toStartOf="@+id/UserMobileNo"
-                app:layout_constraintTop_toBottomOf="@+id/UserMobileNo" />
+                app:layout_constraintStart_toStartOf="@+id/userPhoneNumberTextView"
+                app:layout_constraintTop_toBottomOf="@+id/userPhoneNumberTextView" />
 
             <ImageView
                 android:id="@+id/imageView9"
@@ -134,7 +134,7 @@
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/emailOfUser"
+                app:layout_constraintTop_toBottomOf="@+id/userEmailTextView"
                 app:layout_constraintWidth_percent="0.9"
                 app:srcCompat="@drawable/divider_line" />
 
@@ -196,7 +196,7 @@
             android:paddingBottom="8dp"
             android:text="Cash On delivery"
             android:textColor="#8A8A8A"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/delivryAddress2"
             app:layout_constraintTop_toBottomOf="@+id/delivryAddress2" />
@@ -273,6 +273,17 @@
             app:layout_constraintStart_toStartOf="@+id/textView21"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
+        <ProgressBar
+            android:id="@+id/placeOrderPB"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkOutButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
