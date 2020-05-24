@@ -4,7 +4,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,14 +35,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder
 
     public static class cartViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mCartItemNameTV, mCartItemPrice, mCartItemQuantity, mCartItemSelectedQuantityTV;
-        ImageButton mDeleteCartItemImageButton, mAddQuantityCartItemImageButton, mRemoveQuantityCartItemImageButton;
+        TextView mCartItemNameTV, mCartItemPrice, mCartItemSelectedQuantityTV;
+        //TextView mCartItemQuantity;
+        ImageView mDeleteCartItemImageButton , mAddQuantityCartItemImageButton, mRemoveQuantityCartItemImageButton;
 
 
         public cartViewHolder(@NonNull final View itemView, final OnCartItemClickListener onCartItemClickListener) {
             super(itemView);
             mCartItemNameTV = itemView.findViewById(R.id.cartItemNameTV);
-            mCartItemQuantity = itemView.findViewById(R.id.cartItemQuantityTV);
+            //mCartItemQuantity = itemView.findViewById(R.id.cartItemQuantityTV);
             mCartItemPrice = itemView.findViewById(R.id.cartItemPriceTV);
             mDeleteCartItemImageButton = itemView.findViewById(R.id.cartItemDeleteImageButton);
             mAddQuantityCartItemImageButton = itemView.findViewById(R.id.cartItemAddQuantityImageButton);
@@ -99,7 +102,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder
     @Override
     public void onBindViewHolder(@NonNull cartViewHolder holder, int position) {
         holder.mCartItemNameTV.setText(mCartArrayList.get(position).getMedName());
-        holder.mCartItemQuantity.setText(mCartArrayList.get(position).getMedQuantity());
+        //holder.mCartItemQuantity.setText(mCartArrayList.get(position).getMedQuantity());
         holder.mCartItemPrice.setText(mCartArrayList.get(position).getMedPrice());
         holder.mCartItemSelectedQuantityTV.setText(mCartArrayList.get(position).getMedItemCount());
         holder.mCartItemSelectedQuantityTV.setText(mCartArrayList.get(position).getMedItemCount());

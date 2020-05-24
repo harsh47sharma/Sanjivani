@@ -22,7 +22,7 @@ public class CaptureUserInformation extends AppCompatActivity {
 
     EditText mUserName;
     EditText mUserEmail;
-    EditText mUserAddress;
+   // EditText mUserAddress;
     EditText mUserCity, mUserState, mUserPinCode;
     ProgressBar mUserInfoProgressBar;
 
@@ -39,7 +39,7 @@ public class CaptureUserInformation extends AppCompatActivity {
 
         mUserName = findViewById(R.id.userNameEditText);
         mUserEmail = findViewById(R.id.userEmailEditText);
-        mUserAddress = findViewById(R.id.addressEditText);
+       // mUserAddress = findViewById(R.id.addressEditText);
         mUserCity = findViewById(R.id.cityEditText);
         mUserState = findViewById(R.id.stateEditText);
         mUserPinCode = findViewById(R.id.pinCodeEditText);
@@ -49,17 +49,17 @@ public class CaptureUserInformation extends AppCompatActivity {
             public void onClick(View view) {
                 String userName = mUserName.getText().toString();
                 String userEmail = mUserEmail.getText().toString();
-                String userAddress = mUserAddress.getText().toString();
+               // String userAddress = mUserAddress.getText().toString();
                 String userCity = mUserCity.getText().toString();
                 String userState = mUserState.getText().toString();
                 String userPinCode = mUserPinCode.getText().toString();
                 Intent intent = getIntent();
                 String userPhoneNumber = intent.getStringExtra("user_phone_number");
 
-                if(onValidationSuccess(userName, userEmail, userAddress, userCity, userState, userPinCode)){
+                /*if(onValidationSuccess(userName, userEmail, userAddress, userCity, userState, userPinCode)){
                     mUserInfoProgressBar.setVisibility(View.VISIBLE);
                     pushUserDataToFireStore(userName, userEmail, userAddress, userPhoneNumber, userCity, userState, userPinCode);
-                }
+                }*/
             }
         });
     }
@@ -75,11 +75,11 @@ public class CaptureUserInformation extends AppCompatActivity {
            mUserEmail.requestFocus();
            return false;
        }
-       else if(userAddress.isEmpty()){
+       /*else if(userAddress.isEmpty()){
            mUserAddress.setError("Address Field cannot be empty");
            mUserAddress.requestFocus();
            return false;
-       }
+       }*/
        else if(userCity.isEmpty()){
            mUserCity.setError("city Field cannot be empty");
            mUserCity.requestFocus();

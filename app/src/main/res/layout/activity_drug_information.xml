@@ -22,15 +22,17 @@
 
     <TextView
         android:id="@+id/infoPageMedDescriptionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
         android:text="The club isn't the best place to find a lover So the bar is where I go Me and my friends at the table doing shots Drinking fast and then we talk slow Come over and start up a conversation with just me And trust me I'll give it a chance now Take my hand, stop, put Van the Man on the jukebox And then we start to dance, and now I'm singing like Girl, you know I want your love Your love was handmade for somebody like me Come on now, follow my lead I may be crazy, don't mind me Say, boy, let's not talk too much Grab on my waist and put that body on me Come on now, follow my lead Come, come on now, follow my lead I'm in love with the shape of you We push and pull like a magnet do Although my heart is falling too I'm in love with your body And last night you were in…"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintTop_toBottomOf="@+id/itemCountTextVIew" />
 
     <TextView
         android:id="@+id/infoPageMedQuantityTextView"
@@ -64,12 +66,26 @@
         android:id="@+id/infoPageMedPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rs. 1000"
+        android:text="1000"
         android:textColor="@color/priceColor"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infoPageMedAvailabilityTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/infoPageMedPriceTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rs_symbol"
+        android:textColor="@color/priceColor"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoPageMedAvailabilityTextView"
         app:layout_constraintVertical_bias="0.0" />
@@ -117,36 +133,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.549" />
-
-    <ImageButton
-        android:id="@+id/drugInfoAddCountImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.545"
-        app:srcCompat="@drawable/add_icon" />
-
-    <ImageButton
-        android:id="@+id/drugInfoReduceCountImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.009"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/drugInfoReduceCountImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/drugInfoReduceCountImageButton"
         app:layout_constraintStart_toEndOf="@+id/drugInfoAddCountImageButton"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/drugInfoAddCountImageButton" />
+
+    <ImageView
+        android:id="@+id/drugInfoAddCountImageButton"
+        android:layout_width="27dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:srcCompat="@drawable/add_icon_final" />
+
+    <ImageView
+        android:id="@+id/drugInfoReduceCountImageButton"
+        android:layout_width="27dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/drugInfoAddCountImageButton"
+        app:layout_constraintStart_toEndOf="@+id/drugInfoAddCountImageButton"
+        app:layout_constraintTop_toTopOf="@+id/drugInfoAddCountImageButton"
         app:layout_constraintVertical_bias="0.545"
-        app:srcCompat="@drawable/remove_icon" />
+        app:srcCompat="@drawable/remove_icon_final" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

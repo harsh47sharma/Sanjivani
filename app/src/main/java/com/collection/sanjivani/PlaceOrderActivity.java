@@ -21,7 +21,8 @@ import java.util.List;
 
 public class PlaceOrderActivity extends AppCompatActivity {
 
-    TextView mTotalAmountTV, mAddressTextView;
+    TextView mTotalAmountTV;
+    //TextView mAddressTextView;
     FirebaseFirestore db;
     float totalAmount = 0;
 
@@ -29,8 +30,10 @@ public class PlaceOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mTotalAmountTV = findViewById(R.id.totalAmountTV);
-        mAddressTextView = findViewById(R.id.addressTV);
+        //mAddressTextView = findViewById(R.id.addressTV);
 
         Intent intent = getIntent();
         totalAmount = intent.getFloatExtra("total_payable", totalAmount);
@@ -67,7 +70,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
                             String userState = documentSnapshot.getString("UserState");
                             String userPinCode = documentSnapshot.getString("UserPinCode");
                             String finAddress = userAddress + " ," + userCity + " ," + userState + " ," + userPinCode;
-                            mAddressTextView.setText(finAddress);
+                            //mAddressTextView.setText(finAddress);
                         }
                         else{
                             Toast.makeText(PlaceOrderActivity.this, "User Details not found", Toast.LENGTH_LONG).show();

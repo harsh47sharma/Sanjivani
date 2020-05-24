@@ -19,6 +19,14 @@
     <string name="capture_user_info_heading">One Last Step...</string>
     <string name="user_info_name">Enter your Full Name</string>
     <string name="user_info_email">Enter your email address</string>
+    <string name="pin_code">PinCode</string>
+    <string name="rs_symbol">₹ </string>
+    <string name="flat_number">Flat No.</string>
+    <string name="building">Building</string>
+    <string name="street">Street (Optional)</string>
+    <string name="closest_landmark">Closest Landmark</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
     <string name="user_info_address">Enter your address</string>
     <string name="user_info_create_profile_button">create profile</string>
     <string name="title_activity_main_page">MainPageActivity</string>

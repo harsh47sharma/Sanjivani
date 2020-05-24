@@ -164,7 +164,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void setTotalPayableTV(){
-        mCartTotalPayableTV.setText(String.valueOf(mCartItemTotalPrice));
+        mCartTotalPayableTV.setText("Rs. "+ String.valueOf(mCartItemTotalPrice));
     }
 
     private void updateItemCountToDB(int position, int index) {

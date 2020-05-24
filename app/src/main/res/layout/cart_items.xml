@@ -1,94 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:paddingTop="16dp">
 
 
     <TextView
         android:id="@+id/cartItemNameTV"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="8dp"
+        android:text="Horlicks junior stage 1 powder chocolate"
+        android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.55" />
 
     <TextView
         android:id="@+id/cartItemPriceTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="4dp"
+        android:text="200"
+        android:textColor="@color/priceColor"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cartItemRemoveQuantityImageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintStart_toEndOf="@+id/cartItemPriceTV2"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemNameTV" />
 
     <TextView
-        android:id="@+id/cartItemQuantityTV"
+        android:id="@+id/cartItemPriceTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="4dp"
+        android:text="@string/rs_symbol"
+        android:textColor="@color/priceColor"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cartItemNameTV"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemNameTV" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/cartItemAddQuantityImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.289"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062"
-        app:srcCompat="@drawable/add_icon" />
+        android:layout_width="27dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/add_button_bg"
+        app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:srcCompat="@drawable/add_icon_final" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/cartItemRemoveQuantityImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.669"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063"
-        app:srcCompat="@drawable/remove_icon" />
+        android:layout_width="27dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/add_button_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/cartItemAddQuantityImageButton"
+        app:layout_constraintStart_toEndOf="@+id/cartItemAddQuantityImageButton"
+        app:layout_constraintTop_toTopOf="@+id/cartItemAddQuantityImageButton"
+        app:srcCompat="@drawable/remove_icon_final" />
 
     <TextView
         android:id="@+id/cartItemSelectedQuantityTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cartItemRemoveQuantityImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/cartItemRemoveQuantityImageButton"
         app:layout_constraintStart_toEndOf="@+id/cartItemAddQuantityImageButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintTop_toTopOf="@+id/cartItemAddQuantityImageButton" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/cartItemDeleteImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="33dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cartItemRemoveQuantityImageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintTop_toTopOf="@+id/cartItemRemoveQuantityImageButton"
+        app:srcCompat="@drawable/recycle_bin" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066"
-        app:srcCompat="@drawable/delete_icon" />
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.15"
+        app:srcCompat="@drawable/drug_icon" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mfg: Rpg LIfe Science Ltd"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemPriceTV" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cartItemDeleteImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/cartItemDeleteImageButton"
+        app:layout_constraintTop_toTopOf="@+id/cartItemDeleteImageButton"
+        app:srcCompat="@drawable/line_standing" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemSelectedQuantityTV"
+        app:layout_constraintWidth_percent="0.85"
+        app:srcCompat="@drawable/divider_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

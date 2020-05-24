@@ -4,12 +4,21 @@
     <color name="colorPrimaryDark">#66CCCD</color>
     <color name="colorAccent">#0099ff</color>
 
+    <color name="colorTheme">#883FD9</color>
+
+    <color name="colorTextView">#883FD9</color>
+    <color name="colorEditTexxt">#883FD9</color>
+
+    <color name="waveGradientStartColor">#3AA8F7</color>
+    <color name="waveGradientEndcolor">#AA4DFF</color>
+
     <color name="toolgradientStartColor">#82D8E3</color>
     <color name="toolgradientEndColor">#A6E7CE</color>
 
-    <color name="buttonGradientStartColor">#82D8E3</color>
-    <color name="buttonGradientEndColor">#0099ff</color>
+    <color name="buttonGradientStartColor">#7C43AC</color>
+    <color name="buttonGradientEndColor">#687DE6</color>
 
     <color name="availableColor">#48FF00</color>
     <color name="priceColor">#3F51B5</color>
+
 </resources>

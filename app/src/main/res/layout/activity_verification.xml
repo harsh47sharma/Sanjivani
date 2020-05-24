@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +10,7 @@
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.05"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,17 +73,21 @@
         android:id="@+id/otpPinWidget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="40dp"
+        android:clipToPadding="true"
         app:cursorVisible="true"
         app:forceKeyboard="true"
         app:inputType="number"
+        app:pinBackground="@drawable/pin_view_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_number"
-        app:layout_constraintVertical_bias="0.094"
+        app:layout_constraintVertical_bias="0.103"
         app:pinLength="6"
-        app:pinWidth="40dp" />
+        app:splitWidth="10dp"
+        app:pinHeight="50dp"
+        app:pinWidth="45dp" />
 
     <Button
         android:id="@+id/registerButton"

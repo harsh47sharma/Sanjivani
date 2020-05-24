@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeliveryDetailsActivity"></activity>
-        <activity android:name=".PlaceOrderActivity" />
+        <activity
+            android:name=".DeliveryDetailsActivity"
+            android:parentActivityName=".PlaceOrderActivity"
+            />
+        <activity
+            android:name=".PlaceOrderActivity"
+            android:parentActivityName=".CartActivity"
+            />
         <activity
             android:name=".SearchDrugActivity"
             android:parentActivityName=".NavigationActivity" />

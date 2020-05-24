@@ -33,25 +33,36 @@
                 android:id="@+id/searchbarEditText"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/search_bar_background"
                 android:drawableStart="@drawable/search_icon"
                 android:drawablePadding="17dp"
                 android:ems="10"
-                android:hint="Search"
+                android:hint="Search for medicines here"
                 android:inputType="textPersonName"
                 android:maxLength="10"
                 android:paddingLeft="16dp"
-                android:textColorHint="#9F9F9F"
+                android:textColorHint="#5B5B5B"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="50dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.25"
+                app:layout_constraintTop_toTopOf="@+id/toolbar"
+                app:srcCompat="@drawable/shopping_cart" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
