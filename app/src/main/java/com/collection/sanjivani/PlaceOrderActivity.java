@@ -46,6 +46,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
     float totalAmount = 0;
 
     String finAddress;
+    String userPhoneNumber;
+    String userName;
 
     List<CartInfo> mFinalCartList;
 
@@ -126,14 +128,15 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
-                            String userName = documentSnapshot.getString("UserName");
-                            String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
+                            userName = documentSnapshot.getString("UserName");
+                            userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
                             String userEmail = documentSnapshot.getString("UserEmail");
                             String userAddress = documentSnapshot.getString("UserAddress");
                             String userCity = documentSnapshot.getString("UserCity");
                             String userState = documentSnapshot.getString("UserState");
                             String userPinCode = documentSnapshot.getString("UserPinCode");
                             String userState_PinCode = userState + "-" + userPinCode;
+                            finAddress = userAddress + ", " + userCity + ", " + userState + ", " + userPinCode;
                             mUserNameTextView.setText(userName);
                             mUserPhoneNumberTextView.setText(userPhoneNumber);
                             mUserEmailTextView.setText(userEmail);
@@ -180,8 +183,13 @@ public class PlaceOrderActivity extends AppCompatActivity {
             addItemToCartObject.put("medPrice", cartInfo.getMedPrice());
             addItemToCartObject.put("medQuantity", cartInfo.getMedQuantity());
             addItemToCartObject.put("medItemCount",cartInfo.getMedItemCount());
-            documentReference.collection("userOrders").document(orderId).collection("userOrderItems")
+            documentReference.collection("userOrders").document(orderId)
+                    .collection("userOrderItems")
                     .document(cartInfo.getMedName()).set(addItemToCartObject);
+            db.collection("allOrders").document(orderId)
+                    .collection("ordered items")
+                    .document(cartInfo.getMedName())
+                    .set(addItemToCartObject);
         }
         Map<String, Object> addItemToCartObject = new HashMap<>();
         addItemToCartObject.put("orderId", orderId);
@@ -189,7 +197,11 @@ public class PlaceOrderActivity extends AppCompatActivity {
         addItemToCartObject.put("orderDate", date);
         addItemToCartObject.put("orderTime", time);
         addItemToCartObject.put("orderTotal", String.valueOf(totalAmount));
+        addItemToCartObject.put("userName", userName);
+        addItemToCartObject.put("userPhoneNumber", userPhoneNumber);
+        addItemToCartObject.put("userAddress", finAddress);
         documentReference.collection("userOrders").document(orderId).set(addItemToCartObject);
+        db.collection("allOrders").document(orderId).set(addItemToCartObject);
     }
 
     private void emptyCart(){
@@ -203,9 +215,9 @@ public class PlaceOrderActivity extends AppCompatActivity {
         return "orderid"+ getAlphaNumericString() + getDate();
     }
 
-    private String getAlphaNumericString()
+    public String getAlphaNumericString()
     {
-        int n = 6;
+        int n = 8;
         // chose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
@@ -230,7 +242,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    private String getDate(){
+    public String getDate(){
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         return df.format(c);
@@ -241,7 +253,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         Intent intent = new Intent(PlaceOrderActivity.this, CartActivity.class);
         startActivity(intent);
     }
-    private String getTime(){
+    public String getTime(){
         String time = java.text.DateFormat.getTimeInstance().format(new Date());
         return time;
     }

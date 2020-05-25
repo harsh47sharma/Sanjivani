@@ -9,10 +9,8 @@
 
     <EditText
         android:id="@+id/searchBoxEditText"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="354dp"
+        android:layout_height="57dp"
         android:background="@drawable/search_bar_background"
         android:drawableStart="@drawable/search_icon"
         android:drawableEnd="@drawable/ic_mic_black_24dp"
@@ -25,11 +23,10 @@
         android:paddingRight="8dp"
         android:textColorHint="#5B5B5B"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/getTextfromImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchActivityRecyclerView"
@@ -43,6 +40,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBoxEditText"
         app:layout_constraintVertical_bias="0.073" />
+
+    <ImageButton
+        android:id="@+id/getTextfromImageView"
+        android:layout_width="60dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="80dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/searchActivityRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06"
+        app:srcCompat="@drawable/camera_icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
