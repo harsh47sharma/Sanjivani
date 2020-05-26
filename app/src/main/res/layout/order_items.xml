@@ -4,67 +4,183 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/recycler_view_items_bg"
+    android:paddingBottom="16dp">
 
-    <TextView
-        android:id="@+id/orderIdTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="order id"
-        app:layout_constraintBottom_toTopOf="@+id/orderTotalAmountTextView"
-        app:layout_constraintEnd_toStartOf="@+id/orderPlacedDateTextView"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
+    <ImageView
+        android:id="@+id/orderInfoTickImageView"
+        android:layout_width="22dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView15"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
-
-    <TextView
-        android:id="@+id/orderPlacedDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="placed date"
-        app:layout_constraintBottom_toTopOf="@+id/orderTotalAmountTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
-
-    <TextView
-        android:id="@+id/orderPlacedTimeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
-        android:text="placed time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/orderIdTextView"
-        app:layout_constraintTop_toBottomOf="@+id/orderPlacedDateTextView"
-        app:layout_constraintVertical_bias="0.045" />
-
-    <TextView
-        android:id="@+id/orderTotalAmountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="total amount"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/orderStatusTextView"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:srcCompat="@drawable/tick_icon_one" />
 
     <TextView
         android:id="@+id/orderStatusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="order status"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="20dp"
+        android:text="Order Placed"
+        android:textColor="#03A9F4"
+        android:textSize="21dp"
+        app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
+        app:layout_constraintStart_toEndOf="@+id/orderInfoTickImageView"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoTickImageView" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="22dp"
+        android:layout_height="19dp"
+        app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoTickImageView"
+        app:srcCompat="@drawable/right_arrow" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.594"
-        app:layout_constraintStart_toEndOf="@+id/orderIdTextView"
-        app:layout_constraintTop_toBottomOf="@+id/orderPlacedTimeTextView"
-        app:layout_constraintVertical_bias="0.122" />
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoTickImageView"
+        app:layout_constraintWidth_percent="0.92"
+        app:srcCompat="@drawable/divider_line" />
+
+    <TextView
+        android:id="@+id/orderInfoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ORD1080"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+    <TextView
+        android:id="@+id/orderInfoDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="26 March 2120"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/orderInfoId"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoId"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoId"
+        app:layout_constraintWidth_percent="0.92"
+        app:srcCompat="@drawable/divider_line" />
+
+    <TextView
+        android:id="@+id/orderInfoTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Time :"
+        android:textColor="#030303"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/orderInfoId"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+    <TextView
+        android:id="@+id/orderInfoTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:12 AM"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/orderInfoDate"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoTimeTextView" />
+
+    <TextView
+        android:id="@+id/orderInfoDeliveryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Delivery Type :"
+        android:textColor="#030303"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/orderInfoId"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoTimeTextView" />
+
+    <TextView
+        android:id="@+id/orderDeliveryType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Delivery"
+        android:textColor="#030303"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="@+id/orderInfoTime"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoDeliveryTextView" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoDeliveryTextView"
+        app:layout_constraintWidth_percent="0.92"
+        app:srcCompat="@drawable/divider_line" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Product Order"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/orderInfoDeliveryTextView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+
+    <TextView
+        android:id="@+id/orderInfoAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Amount :"
+        android:textColor="#030303"
+        android:textSize="21dp"
+        app:layout_constraintStart_toStartOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/rs_symbol"
+        android:textColor="#000000"
+        android:textSize="21dp"
+        app:layout_constraintBottom_toBottomOf="@+id/orderInfoTotalAmount"
+        app:layout_constraintEnd_toStartOf="@+id/orderInfoTotalAmount"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoTotalAmount" />
+
+    <TextView
+        android:id="@+id/orderInfoTotalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1000"
+        android:textColor="#000000"
+        android:textSize="21dp"
+        app:layout_constraintEnd_toEndOf="@+id/orderDeliveryType"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoAmountTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -93,7 +93,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.checkOutButton).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.placeOrderButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PlaceOrderActivity.this);

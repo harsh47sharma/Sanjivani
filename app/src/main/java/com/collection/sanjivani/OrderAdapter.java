@@ -32,11 +32,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ordersViewHo
 
         public ordersViewHolder(@NonNull View itemView, final OnOrderItemClickListener orderItemClickListener) {
             super(itemView);
-            mOrderIdTextView = itemView.findViewById(R.id.orderIdTextView);
+            mOrderIdTextView = itemView.findViewById(R.id.orderInfoId);
             mOrderStatusTextView = itemView.findViewById(R.id.orderStatusTextView);
-            mOrderTotalAmountTextView = itemView.findViewById(R.id.orderTotalAmountTextView);
-            mOrderPlacedDateTextView = itemView.findViewById(R.id.orderPlacedDateTextView);
-            mOrderPlacedTimeTextView = itemView.findViewById(R.id.orderPlacedTimeTextView);
+            mOrderTotalAmountTextView = itemView.findViewById(R.id.orderInfoTotalAmount);
+            mOrderPlacedDateTextView = itemView.findViewById(R.id.orderInfoDate);
+            mOrderPlacedTimeTextView = itemView.findViewById(R.id.orderInfoTime);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

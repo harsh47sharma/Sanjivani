@@ -65,10 +65,8 @@ public class VerificationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 codeEnteredByUser = pinView.getValue().trim();
                 verifyUserOTP(codeEnteredByUser);
-
             }
         });
-
     }
 
     private void sendVerificationCode() {

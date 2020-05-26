@@ -21,4 +21,6 @@
     <color name="availableColor">#48FF00</color>
     <color name="priceColor">#3F51B5</color>
 
+    <color name="appBarColor">#883FD9</color>
+
 </resources>

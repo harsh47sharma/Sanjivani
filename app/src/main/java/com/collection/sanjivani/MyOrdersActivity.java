@@ -51,7 +51,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         mOrdersRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mOrdersRecyclerView.setLayoutManager(mLayoutManager);
-
+        SpacingItemsDecorator itemsDecorator = new SpacingItemsDecorator(30);
+        mOrdersRecyclerView.addItemDecoration(itemsDecorator);
         setOrderAdapter();
     }
 

@@ -32,7 +32,7 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delivery_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mUserAddress = findViewById(R.id.deliveryAddress1EditText);
+        mUserAddress = findViewById(R.id.deliveryAddressEditText);
         mUserCity = findViewById(R.id.deliveryUserCityEditText);
         mUserState = findViewById(R.id.deliveryUserStateEditText);
         mUserPinCode = findViewById(R.id.deliveryUserPinCodeEditText);
@@ -43,7 +43,6 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         totalAmount = intent.getFloatExtra("total_payable", totalAmount);
-
 
         findViewById(R.id.saveAddressButton).setOnClickListener(new View.OnClickListener() {
             @Override
