@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class MedInfo implements Serializable {
     public String medName, medAvailability, medPrice;
-    public String medDescription, medQuantity;
+    public String medDescription, medQuantity, navList;
 
     public MedInfo(){
 
@@ -54,5 +54,13 @@ public class MedInfo implements Serializable {
 
     public void setMedQuantity(String medQuantity) {
         this.medQuantity = medQuantity;
+    }
+
+    public String getNavList() {
+        return navList;
+    }
+
+    public void setNavList(String navList) {
+        this.navList = navList;
     }
 }

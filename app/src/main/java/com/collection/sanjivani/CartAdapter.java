@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder> {
+public class    CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder> {
 
     List<CartInfo> mCartArrayList;
     OnCartItemClickListener mCartListener;

@@ -45,7 +45,8 @@ public class MyOrdersActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         userID = FirebaseAuth.getInstance().getUid();
-        userOrderCollectionReference = db.collection("users").document(userID).collection("userOrders");
+        userOrderCollectionReference = db.collection("users").document(userID)
+                .collection("userOrders");
 
         mOrdersRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);

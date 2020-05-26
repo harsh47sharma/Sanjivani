@@ -121,7 +121,13 @@ public class SearchDrugActivity extends AppCompatActivity {
         findViewById(R.id.getTextfromImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pickImage();
+                try {
+                    pickImage();
+                } catch (Exception e) {
+                    Toast.makeText(SearchDrugActivity.this, "Something went wrong plese try again", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+
             }
         });
     }
@@ -164,13 +170,18 @@ public class SearchDrugActivity extends AppCompatActivity {
                     Toast.makeText(SearchDrugActivity.this, "Something went wrong Please try again", Toast.LENGTH_LONG).show();
                 }
             case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
-                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                if(data != null){
+                    CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-                imageUri = result.getUri();
-                try {
-                    detectTextFromImage();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    imageUri = result.getUri();
+                    try {
+                        detectTextFromImage();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else {
+                    Toast.makeText(SearchDrugActivity.this, "Something went wrong Please try again", Toast.LENGTH_LONG).show();
                 }
         }
 

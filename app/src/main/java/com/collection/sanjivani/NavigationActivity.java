@@ -15,9 +15,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,11 +31,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -44,8 +51,21 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     TextView mPhoneNumberTextView;
     Boolean isBackPressedTwice = false;
 
+    RecyclerView mNavItemRecyclerView;
+    RecyclerView mNav2ItemRecyclerView;
+    NavigationItemAdapter mNavigationItemAdapter;
+    Navigation2ItemAdapter mNavigation2ItemAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+    RecyclerView.LayoutManager m2LayoutManager;
+
+    List<MedInfo> mNavItemArrayList;
+    List<MedInfo> mNavItem2ArrayList;
+
     FirebaseFirestore db;
     DocumentReference getUserDetails;
+    CollectionReference userOrderCollectionReference;
+
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +75,31 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
+        mNavItemRecyclerView = findViewById(R.id.navItemRecyclerView);
+        mNav2ItemRecyclerView = findViewById(R.id.navItem2RecyclerView);
 
+        db = FirebaseFirestore.getInstance();
 
+        mNavItemArrayList = new ArrayList<>();
+        mNavItem2ArrayList = new ArrayList<>();
+
+        userID = FirebaseAuth.getInstance().getUid();
+        userOrderCollectionReference = db.collection("drugInfoDB");
+
+        mNavItemRecyclerView.setHasFixedSize(true);
+        mNav2ItemRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(NavigationActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        m2LayoutManager = new LinearLayoutManager(NavigationActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        mNavItemRecyclerView.setLayoutManager(mLayoutManager);
+        mNav2ItemRecyclerView.setLayoutManager(m2LayoutManager);
 
         mDrawerLayout.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                View.SYSTEM_UI_FLAG_FULLSCREEN);
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
 
+        setNavItemAdapter();
+        setNav2ItemAdapter();
         //Setting navigation drawer
         setUpNavigationDrawer();
 
@@ -85,6 +122,60 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             }
         });
 
+    }
+
+    private void setNavItemAdapter(){
+
+        userOrderCollectionReference.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                            MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
+                            if(medInfo.getNavList().equals("1")){
+                                mNavItemArrayList.add(medInfo);
+                            }
+                        }
+                        mNavigationItemAdapter = new NavigationItemAdapter(mNavItemArrayList, NavigationActivity.this);
+                        mNavItemRecyclerView.setAdapter(mNavigationItemAdapter);
+
+                        mNavigationItemAdapter.setOnNavItemClickListener(new NavigationItemAdapter.OnNavItemClickListener() {
+                            @Override
+                            public void onNavItemClick(int position) {
+                                Intent intent = new Intent(NavigationActivity.this, DrugInformationActivity.class);
+                                intent.putExtra("items_object", mNavItemArrayList.get(position));
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                });
+    }
+
+    private void setNav2ItemAdapter(){
+        userOrderCollectionReference.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                            MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
+                            if(medInfo.getNavList().equals("2")){
+                                mNavItem2ArrayList.add(medInfo);
+                            }
+                        }
+                        mNavigation2ItemAdapter = new Navigation2ItemAdapter(mNavItem2ArrayList, NavigationActivity.this);
+                        mNav2ItemRecyclerView.setAdapter(mNavigationItemAdapter);
+
+                        mNavigation2ItemAdapter.setOnNav2ItemClickListener(new Navigation2ItemAdapter.OnNav2ItemClickListener() {
+                            @Override
+                            public void onNav2ItemClick(int position) {
+                                Intent intent = new Intent(NavigationActivity.this, DrugInformationActivity.class);
+                                intent.putExtra("items_object", mNavItem2ArrayList.get(position));
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                });
     }
 
     private void setNavHeaderTextView(){
