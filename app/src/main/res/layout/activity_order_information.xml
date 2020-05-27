@@ -13,304 +13,366 @@
         android:fillViewport="true"
         tools:context="com.collection.sanjivani.OrderInformationActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="true">
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@drawable/recycler_view_items_bg"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/orderInfoTickImageView"
+                android:layout_width="27dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/tick_icon_one" />
+
+
+            <TextView
+                android:id="@+id/orderInfoStatus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/recycler_view_items_bg"
-                android:paddingBottom="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/allerta"
+                android:text="Order Placed"
+                android:textColor="@color/colorTextView"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
+                app:layout_constraintStart_toEndOf="@+id/orderInfoTickImageView" />
 
-                <ImageView
-                    android:id="@+id/orderInfoTickImageView"
-                    android:layout_width="27dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="@+id/imageView15"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/tick_icon_one" />
-
-                <TextView
-                    android:id="@+id/orderInfoStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="Order Placed"
-                    android:textColor="#03A9F4"
-                    android:textSize="21dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
-                    app:layout_constraintStart_toEndOf="@+id/orderInfoTickImageView"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoTickImageView" />
-
-
-                <ImageView
-                    android:id="@+id/orderInfoArrowImageView"
-                    android:layout_width="22dp"
-                    android:layout_height="19dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView15"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoTickImageView"
-                    app:srcCompat="@drawable/right_arrow" />
-
-                <ImageView
-                    android:id="@+id/imageView15"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.516"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/orderInfoTickImageView"
-                    app:layout_constraintWidth_percent="0.92"
-                    app:srcCompat="@drawable/divider_line" />
-
-                <TextView
-                    android:id="@+id/orderInfoId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="ORD1080"
-                    android:textColor="#000000"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/imageView15"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-
-                <TextView
-                    android:id="@+id/orderInfoDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="26 March 2120"
-                    android:textColor="#000000"
-                    android:textSize="18dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/orderInfoId"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView15"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoId"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <ImageView
-                    android:id="@+id/imageView14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.484"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/orderInfoId"
-                    app:layout_constraintWidth_percent="0.92"
-                    app:srcCompat="@drawable/divider_line" />
-
-                <TextView
-                    android:id="@+id/orderInfoTimeTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Time :"
-                    android:textColor="#030303"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/orderInfoId"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
-                <TextView
-                    android:id="@+id/orderInfoTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:12 AM"
-                    android:textColor="#000000"
-                    android:textSize="18dp"
-                    app:layout_constraintEnd_toEndOf="@+id/orderInfoDate"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoTimeTextView" />
-
-                <TextView
-                    android:id="@+id/orderInfoDeliveryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Delivery Type :"
-                    android:textColor="#000000"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/orderInfoId"
-                    app:layout_constraintTop_toBottomOf="@+id/orderInfoTimeTextView" />
-
-                <TextView
-                    android:id="@+id/orderDeliveryType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home Delivery"
-                    android:textColor="#030303"
-                    android:textSize="18dp"
-                    app:layout_constraintEnd_toEndOf="@+id/orderInfoTime"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoDeliveryTextView" />
-
-                <ImageView
-                    android:id="@+id/imageView16"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/orderInfoDeliveryTextView"
-                    app:layout_constraintWidth_percent="0.92"
-                    app:srcCompat="@drawable/divider_line" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Product Order"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toStartOf="@+id/orderInfoDeliveryTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView16" />
-
-                <TextView
-                    android:id="@+id/orderInfoAmountTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Amount :"
-                    android:textColor="#030303"
-                    android:textSize="21dp"
-                    app:layout_constraintStart_toStartOf="@+id/textView22"
-                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/rs_symbol"
-                    android:textColor="#000000"
-                    android:textSize="21dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/orderInfoTotalAmount"
-                    app:layout_constraintEnd_toStartOf="@+id/orderInfoTotalAmount"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoTotalAmount" />
-
-                <TextView
-                    android:id="@+id/orderInfoTotalAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1000"
-                    android:textColor="#000000"
-                    android:textSize="21dp"
-                    app:layout_constraintEnd_toEndOf="@+id/orderDeliveryType"
-                    app:layout_constraintTop_toTopOf="@+id/orderInfoAmountTextView" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout5"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/recycler_view_items_bg"
-                android:paddingBottom="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-                tools:layout_editor_absoluteX="0dp">
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Address Details"
-                    android:textColor="@color/colorTextView"
-                    android:textSize="21sp"
-                    app:layout_constraintStart_toStartOf="@+id/imageView60"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView60"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.516"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12"
-                    app:layout_constraintWidth_percent="0.92"
-                    app:srcCompat="@drawable/divider_line" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="user state"
-                    tools:layout_editor_absoluteX="164dp"
-                    tools:layout_editor_absoluteY="256dp" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="184dp"
-                    android:layout_marginTop="172dp"
-                    android:text="user address"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserName"
-                    android:layout_width="68dp"
-                    android:layout_height="21dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="user name"
-                    app:layout_constraintStart_toStartOf="@+id/imageView60"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView60" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserPhoneNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="user phone number"
-                    tools:layout_editor_absoluteX="236dp"
-                    tools:layout_editor_absoluteY="112dp" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserPinCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="user pinCode"
-                    tools:layout_editor_absoluteX="30dp"
-                    tools:layout_editor_absoluteY="134dp" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserCity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="user city"
-                    tools:layout_editor_absoluteX="338dp"
-                    tools:layout_editor_absoluteY="256dp" />
-
-                <TextView
-                    android:id="@+id/orderInfoUserEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="user email"
-                    tools:layout_editor_absoluteX="87dp"
-                    tools:layout_editor_absoluteY="99dp" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/orderInfoItemRecyclerView"
+            <ImageView
+                android:id="@+id/imageView15"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoTickImageView"
+                app:layout_constraintWidth_percent="0.92"
+                app:srcCompat="@drawable/divider_line" />
+
+            <TextView
+                android:id="@+id/orderInfoId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="ORD1080"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView14"
+                app:layout_constraintStart_toStartOf="@+id/imageView15"
+                app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+            <TextView
+                android:id="@+id/orderInfoDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="26 March 2120"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="@+id/orderInfoId"
+                app:layout_constraintEnd_toEndOf="@+id/imageView15"
+                app:layout_constraintTop_toBottomOf="@+id/imageView15"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.484"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoDate"
+                app:layout_constraintWidth_percent="0.92"
+                app:srcCompat="@drawable/divider_line" />
+
+            <TextView
+                android:id="@+id/orderInfoTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Time"
+                android:textColor="#030303"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoId"
+                app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+            <TextView
+                android:id="@+id/orderInfoTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10:12 AM"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/orderInfoDate"
+                app:layout_constraintTop_toTopOf="@+id/orderInfoTimeTextView" />
+
+            <TextView
+                android:id="@+id/orderInfoDeliveryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Delivery Type"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoId"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoTimeTextView" />
+
+            <TextView
+                android:id="@+id/orderDeliveryType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Delivery"
+                android:textColor="#030303"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="@+id/orderInfoTime"
+                app:layout_constraintTop_toTopOf="@+id/orderInfoDeliveryTextView" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="627dp" />
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoDeliveryTextView"
+                app:layout_constraintWidth_percent="0.92"
+                app:srcCompat="@drawable/divider_line" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Product Order"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoDeliveryTextView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+
+            <TextView
+                android:id="@+id/orderInfoAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Amount :"
+                android:textColor="#030303"
+                android:textSize="21dp"
+                app:layout_constraintStart_toStartOf="@+id/textView22"
+                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/rs_symbol"
+                android:textColor="@color/priceColor"
+                android:textSize="21dp"
+                app:layout_constraintBottom_toBottomOf="@+id/orderInfoTotalAmount"
+                app:layout_constraintEnd_toStartOf="@+id/orderInfoTotalAmount"
+                app:layout_constraintTop_toTopOf="@+id/orderInfoTotalAmount" />
+
+            <TextView
+                android:id="@+id/orderInfoTotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:textColor="@color/priceColor"
+                android:textSize="21dp"
+                app:layout_constraintEnd_toEndOf="@+id/orderDeliveryType"
+                app:layout_constraintTop_toTopOf="@+id/orderInfoAmountTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/recycler_view_items_bg"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/allerta"
+                android:text="Address Details"
+                android:textColor="@color/colorTextView"
+                android:textSize="21sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView60"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                app:layout_constraintWidth_percent="0.92"
+                app:srcCompat="@drawable/divider_line" />
+
+            <TextView
+                android:id="@+id/orderInfoUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/allerta"
+                android:text="Hush Sharma"
+                android:textColor="#5E5E5E"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/imageView60"
+                app:layout_constraintTop_toBottomOf="@+id/imageView60" />
+
+            <TextView
+                android:id="@+id/orderInfoUserAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="112 C Special Gandhi Nagar"
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoUserName"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoUserName" />
+
+            <TextView
+                android:id="@+id/orderInfoUserCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="Indore"
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoUserAddress"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoUserAddress" />
+
+            <TextView
+                android:id="@+id/dashTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text=" - "
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/orderInfoUserState"
+                app:layout_constraintTop_toTopOf="@+id/orderInfoUserState" />
+
+            <TextView
+                android:id="@+id/orderInfoUserState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="MP"
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoUserCity"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoUserCity" />
+
+            <TextView
+                android:id="@+id/orderInfoUserPinCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="452001"
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/dashTextView"
+                app:layout_constraintTop_toTopOf="@+id/dashTextView" />
+
+            <TextView
+                android:id="@+id/orderInfoUserPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="9009875646"
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoUserState"
+                app:layout_constraintTop_toBottomOf="@+id/dashTextView" />
+
+            <TextView
+                android:id="@+id/orderInfoUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="user email"
+                android:textColor="#727272"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/orderInfoUserPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/orderInfoUserPhoneNumber" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/my_button"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="Cancel Order"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+            app:layout_constraintWidth_percent="0.85" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/top_round_bg"
+            android:fontFamily="@font/allerta"
+            android:paddingLeft="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Order Cart"
+            android:textColor="@color/colorTextView"
+            android:textSize="21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orderInfoItemRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 

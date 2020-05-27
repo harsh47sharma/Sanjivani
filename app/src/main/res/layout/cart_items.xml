@@ -5,19 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    android:paddingTop="16dp">
+    android:paddingBottom="16dp">
 
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/drug_icon" />
 
@@ -25,7 +26,8 @@
         android:id="@+id/cartItemNameTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/allerta"
         android:text="Horlicks junior stage 1 powder chocolate"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -33,7 +35,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintWidth_percent="0.55" />
+        app:layout_constraintWidth_percent="0.6" />
 
     <TextView
         android:id="@+id/rsSymbol"
@@ -127,11 +129,10 @@
         android:id="@+id/imageView8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.262"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cartItemSelectedQuantityTV"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.85"
         app:srcCompat="@drawable/divider_line" />
 

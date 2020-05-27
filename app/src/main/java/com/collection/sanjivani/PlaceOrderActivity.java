@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +59,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        RadioButton radioButton = findViewById(R.id.cashOnDeliveryRadioButton);
+        radioButton.setChecked(true);
 
         mTotalAmountTV = findViewById(R.id.totalAmountTV);
         mUserNameTextView = findViewById(R.id.userNameTextView);

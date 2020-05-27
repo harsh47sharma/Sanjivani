@@ -3,6 +3,7 @@ package com.collection.sanjivani;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -54,6 +55,7 @@ public class SearchDrugActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     CollectionReference drugCollectionReference;
     FirebaseFirestore db;
+    ConstraintLayout mUploadPrescriptionConstraintLayout;
 
     SpeechRecognizer mSpeechRecognizer;
     Intent mSpeechRecognizerIntent;
@@ -73,6 +75,7 @@ public class SearchDrugActivity extends AppCompatActivity {
 
         searchBoxEditText = findViewById(R.id.searchBoxEditText);
         recyclerView = findViewById(R.id.searchActivityRecyclerView);
+        mUploadPrescriptionConstraintLayout = findViewById(R.id.uploadPrescriptionConstraintLayout);
 
         db = FirebaseFirestore.getInstance();
         drugCollectionReference = db.collection("drugInfoDB");
@@ -222,6 +225,7 @@ public class SearchDrugActivity extends AppCompatActivity {
 
                             if(medInfo.getMedName().contains(stringSearchedByUser.toLowerCase())){
                                 medInfoArrayList.add(medInfo);
+                                mUploadPrescriptionConstraintLayout.setVisibility(View.INVISIBLE);
                             }
                         }
 
