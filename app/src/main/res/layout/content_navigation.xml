@@ -81,7 +81,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/navItem2RecyclerView"
+            android:id="@+id/nav2ItemRecyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -90,7 +90,7 @@
             android:paddingBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uploadPrescriptionConstraintLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/uploadPrescriptionConstraintLayout"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/navItemRecyclerView"
@@ -102,7 +102,7 @@
             android:paddingBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/navItem2RecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/nav2ItemRecyclerView" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addToCartButton"

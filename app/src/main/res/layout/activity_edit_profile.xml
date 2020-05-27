@@ -122,7 +122,7 @@
             app:layout_constraintTop_toBottomOf="@+id/emailEditProfileEditText" />
 
         <EditText
-            android:id="@+id/deliveryAddressEditProfileEditText"
+            android:id="@+id/addressEditProfileEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorEditTexxt"
@@ -142,7 +142,7 @@
             android:textColor="@color/colorTextView"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/deliveryAddressEditProfileEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/addressEditProfileEditText" />
 
         <EditText
             android:id="@+id/userCityEditProfileEditText"
@@ -224,7 +224,7 @@
             app:layout_constraintWidth_percent="0.7" />
 
         <ProgressBar
-            android:id="@+id/deliveryProgressBar"
+            android:id="@+id/editProfileProgressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,11 +1,13 @@
 package com.collection.sanjivani;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -118,11 +120,20 @@ public class CartActivity extends AppCompatActivity {
 
                         mAdapter.setOnCartItemClickListener(new CartAdapter.OnCartItemClickListener() {
                             @Override
-                            public void onCartItemDeleteClick(int position) {
-                                deleteItemFromCart(position);
-                                setTotalPayableTV();
-                                mCartArrayList.remove(position);
-                                mAdapter.notifyDataSetChanged();
+                            public void onCartItemDeleteClick(final int position) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+                                builder.setMessage("Remove this item from cart?").
+                                        setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                deleteItemFromCart(position);
+                                                mCartArrayList.remove(position);
+                                                mAdapter.notifyDataSetChanged();
+                                            }
+                                        })
+                                        .setNegativeButton("no", null);
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
                             }
 
                             @Override
@@ -177,11 +188,18 @@ public class CartActivity extends AppCompatActivity {
                 .update("medItemCount", String.valueOf(index));
     }
 
-    public void deleteItemFromCart(int position) {
+    public void deleteItemFromCart(final int position) {
+        mCartItemTotalPrice -= (mCartItemPriceArrayList.get(position)*mCartItemCountArrayList.get(position));
+        mCartItemCountArrayList.remove(position);
+        mCartItemPriceArrayList.remove(position);
+        setTotalPayableTV();
         userCartDocumentReference.collection("userCart")
-                .document(mCartArrayList.get(position).getMedName()).delete();
+                .document(mCartArrayList.get(position).getMedName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
 
-        mCartItemTotalPrice -= mCartItemPriceArrayList.get(position)*mCartItemCountArrayList.get(position);
+            }
+        });
 
     }
 

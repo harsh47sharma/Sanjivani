@@ -37,7 +37,7 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
         mUserState = findViewById(R.id.deliveryUserStateEditText);
         mUserPinCode = findViewById(R.id.deliveryUserPinCodeEditText);
 
-        mProgressBar = findViewById(R.id.deliveryProgressBar);
+        mProgressBar = findViewById(R.id.editProfileProgressBar);
 
         db = FirebaseFirestore.getInstance();
 

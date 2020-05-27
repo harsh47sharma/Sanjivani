@@ -16,8 +16,8 @@ import java.util.List;
 
 public class    CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder> {
 
-    List<CartInfo> mCartArrayList;
-    OnCartItemClickListener mCartListener;
+    private List<CartInfo> mCartArrayList;
+    private OnCartItemClickListener mCartListener;
 
 
     public interface OnCartItemClickListener {

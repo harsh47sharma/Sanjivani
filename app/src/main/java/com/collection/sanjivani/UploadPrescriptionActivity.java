@@ -143,6 +143,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
             });
         }
         else {
+            mProgressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(UploadPrescriptionActivity.this, "no file selected", Toast.LENGTH_LONG).show();
         }
     }

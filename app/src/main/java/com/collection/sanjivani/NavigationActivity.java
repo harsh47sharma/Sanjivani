@@ -2,10 +2,8 @@ package com.collection.sanjivani;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -23,8 +21,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -34,11 +30,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,7 +51,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     RecyclerView.LayoutManager m2LayoutManager;
 
     List<MedInfo> mNavItemArrayList;
-    List<MedInfo> mNavItem2ArrayList;
+    List<MedInfo> mNav2ItemArrayList;
 
     FirebaseFirestore db;
     DocumentReference getUserDetails;
@@ -75,13 +67,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mNavigationView = findViewById(R.id.nav_view);
         mToolbar = findViewById(R.id.toolbar);
+
         mNavItemRecyclerView = findViewById(R.id.navItemRecyclerView);
-        mNav2ItemRecyclerView = findViewById(R.id.navItem2RecyclerView);
+        mNav2ItemRecyclerView = findViewById(R.id.nav2ItemRecyclerView);
 
         db = FirebaseFirestore.getInstance();
 
         mNavItemArrayList = new ArrayList<>();
-        mNavItem2ArrayList = new ArrayList<>();
+        mNav2ItemArrayList = new ArrayList<>();
 
         userID = FirebaseAuth.getInstance().getUid();
         userOrderCollectionReference = db.collection("drugInfoDB");
@@ -160,17 +153,17 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                         for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                             MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
                             if(medInfo.getNavList().equals("2")){
-                                mNavItem2ArrayList.add(medInfo);
+                                mNav2ItemArrayList.add(medInfo);
                             }
                         }
-                        mNavigation2ItemAdapter = new Navigation2ItemAdapter(mNavItem2ArrayList, NavigationActivity.this);
-                        mNav2ItemRecyclerView.setAdapter(mNavigationItemAdapter);
+                        mNavigation2ItemAdapter = new Navigation2ItemAdapter(mNav2ItemArrayList, NavigationActivity.this);
+                        mNav2ItemRecyclerView.setAdapter(mNavigation2ItemAdapter);
 
                         mNavigation2ItemAdapter.setOnNav2ItemClickListener(new Navigation2ItemAdapter.OnNav2ItemClickListener() {
                             @Override
                             public void onNav2ItemClick(int position) {
                                 Intent intent = new Intent(NavigationActivity.this, DrugInformationActivity.class);
-                                intent.putExtra("items_object", mNavItem2ArrayList.get(position));
+                                intent.putExtra("items_object", mNav2ItemArrayList.get(position));
                                 startActivity(intent);
                             }
                         });

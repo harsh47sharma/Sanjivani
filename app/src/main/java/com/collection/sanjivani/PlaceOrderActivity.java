@@ -3,7 +3,11 @@ package com.collection.sanjivani;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
@@ -50,6 +54,10 @@ public class PlaceOrderActivity extends AppCompatActivity {
     String userPhoneNumber;
     String userName;
 
+    private static final String CHANNEL_ID = "Sanjivani";
+    private static final String CHANNEL_NAME = "Order Placed";
+    private static final String CHANNEL_DESC = "Your order has been placed successfully";
+
     List<CartInfo> mFinalCartList;
 
     final String userID = FirebaseAuth.getInstance().getUid();
@@ -82,6 +90,14 @@ public class PlaceOrderActivity extends AppCompatActivity {
         totalAmount = intent.getFloatExtra("total_payable", totalAmount);
         mTotalAmountTV.setText(String.valueOf(totalAmount));
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+
+        }
+
         //set address
         setAddress();
         getFinalCart();
@@ -107,14 +123,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
                                 placeOrder();
                                 mPlaceOrderPB.setVisibility(View.VISIBLE);
                                 Toast.makeText(PlaceOrderActivity.this, "Order Placed", Toast.LENGTH_LONG).show();
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        emptyCart();
-                                        Intent intent1 = new Intent(PlaceOrderActivity.this, NavigationActivity.class);
-                                        startActivity(intent1);
-                                    }
-                                }, 2000);
+                                showNavDialog();
                             }
                         })
                         .setNegativeButton("no", null);
@@ -122,6 +131,41 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+    }
+
+    public void setNotification(){
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.cart_black_icon)
+                .setContentTitle("Order Placed")
+                .setContentText("Your order has been placed successfully")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(1, mBuilder.build());
+
+    }
+
+    private void showNavDialog(){
+        mPlaceOrderPB.setVisibility(View.INVISIBLE);
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(PlaceOrderActivity.this);
+        builder1.setMessage("Order Placed!").
+                setPositiveButton("go to my orders", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent1 = new Intent(PlaceOrderActivity.this, MyOrdersActivity.class);
+                        startActivity(intent1);
+                    }
+                })
+                .setNegativeButton("continue shopping", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent1 = new Intent(PlaceOrderActivity.this, NavigationActivity.class);
+                        startActivity(intent1);
+                    }
+                });
+        AlertDialog alertDialog1 = builder1.create();
+        alertDialog1.show();
     }
 
     public void setAddress(){
@@ -205,6 +249,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         addItemToCartObject.put("userAddress", finAddress);
         documentReference.collection("userOrders").document(orderId).set(addItemToCartObject);
         db.collection("allOrders").document(orderId).set(addItemToCartObject);
+        setNotification();
     }
 
     private void emptyCart(){

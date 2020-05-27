@@ -150,7 +150,7 @@
                 app:layout_constraintWidth_percent="0.7" />
 
             <ProgressBar
-                android:id="@+id/deliveryProgressBar"
+                android:id="@+id/editProfileProgressBar"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

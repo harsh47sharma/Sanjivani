@@ -1,12 +1,16 @@
 package com.collection.sanjivani;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,6 +86,34 @@ public class OrderInformationActivity extends AppCompatActivity {
 
         setOrderItemList();
 
+        findViewById(R.id.cancelOrderButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(OrderInformationActivity.this);
+                builder.setMessage("Are you sure you want to cancel this order").
+                        setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                cancelOrder();
+                            }
+                        })
+                        .setNegativeButton("no", null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
+    }
+
+    private void cancelOrder(){
+        mDocumentReference.collection("userOrders").document(orderId).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Intent intent = new Intent(OrderInformationActivity.this, MyOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setOrderInfo() {
