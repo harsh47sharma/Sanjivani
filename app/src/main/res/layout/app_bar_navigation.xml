@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/nav_menu_icon"
@@ -35,11 +36,11 @@
                 android:id="@+id/appBarTitleNavPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
                 android:text="Sanjivani"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -70,14 +71,29 @@
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="50dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="12dp"
                 app:layout_constraintBottom_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.25"
-                app:layout_constraintTop_toTopOf="@+id/toolbar"
-                app:srcCompat="@drawable/shopping_cart" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cart_icon_white" />
+
+            <TextView
+                android:id="@+id/cartBadgeTextView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/cart_badge"
+                android:gravity="center"
+                android:text="99"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.100000024" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

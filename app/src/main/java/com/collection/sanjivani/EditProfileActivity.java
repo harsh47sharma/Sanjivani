@@ -1,6 +1,7 @@
 package com.collection.sanjivani;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     EditText mNameET, mEmailET, mAddressET, mCityET, mStateET, mPinCodeET;
     ProgressBar mProgressBar;
+    ConstraintLayout mEditProfileConstraintLayout;
 
     FirebaseFirestore db;
     String userID;
@@ -37,6 +39,21 @@ public class EditProfileActivity extends AppCompatActivity {
         mStateET = findViewById(R.id.userStateEditProfileEditText);
         mPinCodeET = findViewById(R.id.userPinCodeEditProfileEditText);
         mProgressBar = findViewById(R.id.editProfileProgressBar);
+        mEditProfileConstraintLayout= findViewById(R.id.editProfileConstraintLayout);
+
+        mEditProfileConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarEditProfileBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditProfileActivity.this, NavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         userID = FirebaseAuth.getInstance().getUid();
@@ -109,7 +126,16 @@ public class EditProfileActivity extends AppCompatActivity {
                         Toast.makeText(EditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(EditProfileActivity.this, NavigationActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(EditProfileActivity.this, NavigationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

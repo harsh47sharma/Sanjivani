@@ -1,11 +1,13 @@
 package com.collection.sanjivani;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +23,7 @@ import java.util.List;
 public class MyOrdersActivity extends AppCompatActivity {
 
     List<OrderInfo> mOrdersArrayList;
+    ConstraintLayout mMyOrdersConstraintLayout;
 
     RecyclerView mOrdersRecyclerView;
     OrderAdapter mOrdersAdapter;
@@ -36,12 +39,41 @@ public class MyOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_orders);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         mOrdersArrayList = new ArrayList<>();
         mOrdersRecyclerView = findViewById(R.id.ordersRecyclerView);
+        mMyOrdersConstraintLayout = findViewById(R.id.myOrdersConstraintLayout);
 
-        this.setTitle("My Orders");
+        mMyOrdersConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarMyOrdersBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyOrdersActivity.this, NavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarMyOrdersSearchImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyOrdersActivity.this, SearchDrugActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarMyOrdersCartImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyOrdersActivity.this, CartActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         userID = FirebaseAuth.getInstance().getUid();
@@ -55,6 +87,13 @@ public class MyOrdersActivity extends AppCompatActivity {
         mOrdersRecyclerView.addItemDecoration(itemsDecorator);
         setOrderAdapter();
     }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(MyOrdersActivity.this, NavigationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     private void setOrderAdapter() {
         userOrderCollectionReference.get()

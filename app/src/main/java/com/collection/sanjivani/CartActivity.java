@@ -36,6 +36,7 @@ import java.util.Map;
 
 public class CartActivity extends AppCompatActivity {
 
+    ConstraintLayout mConstraintLayout;
     List<CartInfo> mCartArrayList;
     List<Integer> mCartItemCountArrayList;
     List<Float> mCartItemPriceArrayList;
@@ -45,6 +46,7 @@ public class CartActivity extends AppCompatActivity {
     RecyclerView mCartRecyclerView;
     CartAdapter mAdapter;
     RecyclerView.LayoutManager mLayoutManager;
+    //TextView mItemCountCartTextView;
 
     String userID;
 
@@ -52,13 +54,14 @@ public class CartActivity extends AppCompatActivity {
     DocumentReference userCartDocumentReference;
 
     float mCartItemTotalPrice = 0;
+    //int cartItemsCount=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mConstraintLayout = findViewById(R.id.cartViewConstraintLayout);
 
         mCartArrayList = new ArrayList<>();
         mCartItemCountArrayList = new ArrayList<>();
@@ -68,8 +71,7 @@ public class CartActivity extends AppCompatActivity {
         mEmptyCartTextView = findViewById(R.id.emptyCartTextView);
         mCartItemSelectedQuantityTV = findViewById(R.id.cartItemSelectedQuantityTV);
         mCartTotalPayableTV = findViewById(R.id.cartTotalPayableTextView);
-
-        this.setTitle("Cart");
+      //  mItemCountCartTextView = findViewById(R.id.itemCountCartTextView);
 
         db = FirebaseFirestore.getInstance();
         userID = FirebaseAuth.getInstance().getUid();
@@ -80,8 +82,31 @@ public class CartActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mCartRecyclerView.setLayoutManager(mLayoutManager);
 
+        mConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
         //populating cart recycler view
         setAdapter();
+
+        findViewById(R.id.appBarCartBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CartActivity.this, NavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarCartSearchImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CartActivity.this, SearchDrugActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         findViewById(R.id.checkOutButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +121,8 @@ public class CartActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     private void setAdapter() {
@@ -118,6 +145,9 @@ public class CartActivity extends AppCompatActivity {
                         mAdapter = new CartAdapter(mCartArrayList);
                         mCartRecyclerView.setAdapter(mAdapter);
 
+//                        cartItemsCount = mAdapter.getItemCount();
+//                        mItemCountCartTextView.setText(cartItemsCount);
+
                         mAdapter.setOnCartItemClickListener(new CartAdapter.OnCartItemClickListener() {
                             @Override
                             public void onCartItemDeleteClick(final int position) {
@@ -134,6 +164,7 @@ public class CartActivity extends AppCompatActivity {
                                         .setNegativeButton("no", null);
                                 AlertDialog alertDialog = builder.create();
                                 alertDialog.show();
+                                //cartItemsCount--;
                             }
 
                             @Override
@@ -220,5 +251,6 @@ public class CartActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(CartActivity.this, NavigationActivity.class);
         startActivity(intent);
+        finish();
     }
 }

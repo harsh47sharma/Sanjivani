@@ -3,6 +3,7 @@ package com.collection.sanjivani;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -11,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +31,9 @@ import java.util.Map;
 
 public class DrugInformationActivity extends AppCompatActivity {
 
+    ConstraintLayout mDrugInfoConstraintLayout;
     TextView mMedNameTextView;
+    TextView mAppBarDrugInfoTextView;
     TextView mMedDescriptionTextView;
     TextView mMedPriceTextView;
     TextView mMedAvailabilityTextView;
@@ -48,7 +52,6 @@ public class DrugInformationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drug_information);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mMedNameTextView = findViewById(R.id.infoPageMedNameTextView);
         mMedDescriptionTextView = findViewById(R.id.infoPageMedDescriptionTextView);
@@ -56,9 +59,45 @@ public class DrugInformationActivity extends AppCompatActivity {
         mMedAvailabilityTextView = findViewById(R.id.infoPageMedAvailabilityTextView);
         mMedQuantityTextView = findViewById(R.id.infoPageMedQuantityTextView);
         mItemCountTextView = findViewById(R.id.itemCountTextVIew);
+        mDrugInfoConstraintLayout = findViewById(R.id.drugInfoConstraintLayout);
+        mAppBarDrugInfoTextView = findViewById(R.id.appBarDrugInfoTextView);
 
         db = FirebaseFirestore.getInstance();
         cartCollectionReference = db.collection("users");
+
+        mDrugInfoConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarDrugInfoBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DrugInformationActivity.this, NavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarDrugInfoSearchImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DrugInformationActivity.this, SearchDrugActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        findViewById(R.id.appBarDrugInfoCartImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DrugInformationActivity.this, CartActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
@@ -164,9 +203,17 @@ public class DrugInformationActivity extends AppCompatActivity {
 
     private void populateMedInfo() {
         mMedNameTextView.setText(mMedName);
+        mAppBarDrugInfoTextView.setText(mMedName);
         mMedDescriptionTextView.setText(mMedDescription);
         mMedPriceTextView.setText(mMedPrice);
         mMedAvailabilityTextView.setText(mMedAvailability);
         mMedQuantityTextView.setText(mMedQuantity);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DrugInformationActivity.this, NavigationActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -26,7 +26,7 @@
         android:fontFamily="@font/allerta"
         android:text="Order Placed"
         android:textColor="@color/colorTextView"
-        android:textSize="21dp"
+        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
         app:layout_constraintStart_toEndOf="@+id/orderInfoTickImageView" />
 
@@ -56,10 +56,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="ORD1080"
         android:textColor="#000000"
-        android:textSize="12sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/imageView15"
         app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
@@ -69,11 +69,9 @@
         android:layout_height="wrap_content"
         android:text="26 March 2120"
         android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/orderInfoId"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintTop_toTopOf="@+id/orderInfoId"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/orderInfoTime"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
 
     <ImageView
         android:id="@+id/imageView14"
@@ -91,10 +89,10 @@
         android:id="@+id/orderInfoTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="Time"
         android:textColor="#030303"
-        android:textSize="18dp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/orderInfoId"
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
@@ -102,22 +100,23 @@
         android:id="@+id/orderInfoTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:text="10:12 AM"
         android:textColor="#000000"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/orderInfoDate"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView14"
         app:layout_constraintTop_toTopOf="@+id/orderInfoTimeTextView" />
 
     <TextView
         android:id="@+id/orderInfoDeliveryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="Delivery Type"
         android:textColor="#030303"
-        android:textSize="18dp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/orderInfoId"
-        app:layout_constraintTop_toBottomOf="@+id/orderInfoTimeTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView20" />
 
     <TextView
         android:id="@+id/orderDeliveryType"
@@ -125,8 +124,8 @@
         android:layout_height="wrap_content"
         android:text="Home Delivery"
         android:textColor="#030303"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="@+id/orderInfoTime"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/orderInfoDate"
         app:layout_constraintTop_toTopOf="@+id/orderInfoDeliveryTextView" />
 
     <ImageView
@@ -140,13 +139,25 @@
         app:layout_constraintWidth_percent="0.92"
         app:srcCompat="@drawable/divider_line" />
 
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        app:layout_constraintWidth_percent="0.92"
+        app:srcCompat="@drawable/divider_line" />
+
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:text="Product Order"
-        android:textSize="18dp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/orderInfoDeliveryTextView"
         app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
@@ -157,7 +168,7 @@
         android:layout_marginTop="16dp"
         android:text="Amount :"
         android:textColor="#030303"
-        android:textSize="21dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -168,7 +179,7 @@
         android:layout_marginEnd="8dp"
         android:text="@string/rs_symbol"
         android:textColor="@color/priceColor"
-        android:textSize="21dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/orderInfoTotalAmount"
         app:layout_constraintEnd_toStartOf="@+id/orderInfoTotalAmount"
         app:layout_constraintTop_toTopOf="@+id/orderInfoTotalAmount" />
@@ -179,8 +190,19 @@
         android:layout_height="wrap_content"
         android:text="1000"
         android:textColor="@color/priceColor"
-        android:textSize="21dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/orderDeliveryType"
         app:layout_constraintTop_toTopOf="@+id/orderInfoAmountTextView" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Date"
+        android:textColor="#030303"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/orderInfoTimeTextView"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoTimeTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

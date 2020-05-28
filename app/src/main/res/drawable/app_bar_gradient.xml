@@ -11,8 +11,8 @@
     <gradient
         android:angle="360"
         android:type="linear"
-        android:startColor="@color/toolgradientStartColor"
-        android:endColor="@color/toolgradientEndColor"
+        android:startColor="@color/appBarColor"
+        android:endColor="@color/appBarColor"
         />
 
 </shape>

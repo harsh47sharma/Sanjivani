@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class    CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder> {
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHolder> {
 
     private List<CartInfo> mCartArrayList;
     private OnCartItemClickListener mCartListener;
@@ -111,6 +111,8 @@ public class    CartAdapter extends RecyclerView.Adapter<CartAdapter.cartViewHol
 
     @Override
     public int getItemCount() {
-        return mCartArrayList.size();
+        if (mCartArrayList != null)
+            return mCartArrayList.size();
+        return 0;
     }
 }

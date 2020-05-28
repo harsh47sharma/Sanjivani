@@ -1,252 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fillViewport="true"
+    android:id="@+id/editProfileConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.collection.sanjivani.EditProfileActivity" >
+    tools:context="com.collection.sanjivani.EditProfileActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/constrain_layout_bg"
-        android:isScrollContainer="true">
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar_edit_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/nameTextView"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/allerta"
-            android:text="Name"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/constrain_layout_bg"
+            android:isScrollContainer="true">
 
-        <EditText
-            android:id="@+id/changeNameEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:ems="10"
-            android:foregroundTint="#DA00FF"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/allerta"
+                android:text="Name"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:background="@drawable/pin_view_bg"
-            android:ems="10"
-            android:hint="+91"
-            android:inputType="phone"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColorHint="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/mobileNumberEditProfileEditText"
-            app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toTopOf="@+id/mobileNumberEditProfileEditText" />
+            <EditText
+                android:id="@+id/changeNameEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:ems="10"
+                android:foregroundTint="#DA00FF"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
-        <TextView
-            android:id="@+id/mobileNumberTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/allerta"
-            android:text="Mobile Number"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/editText2"
-            app:layout_constraintTop_toBottomOf="@+id/changeNameEditProfileEditText" />
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="@drawable/pin_view_bg"
+                android:ems="10"
+                android:hint="+91"
+                android:inputType="phone"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColorHint="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/mobileNumberEditProfileEditText"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toTopOf="@+id/mobileNumberEditProfileEditText" />
 
-        <EditText
-            android:id="@+id/mobileNumberEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:ems="10"
-            android:foregroundTint="#DA00FF"
-            android:inputType="phone"
-            app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
-            app:layout_constraintStart_toStartOf="@+id/mobileNumberTextView"
-            app:layout_constraintTop_toBottomOf="@+id/mobileNumberTextView" />
+            <TextView
+                android:id="@+id/mobileNumberTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/allerta"
+                android:text="Mobile Number"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/editText2"
+                app:layout_constraintTop_toBottomOf="@+id/changeNameEditProfileEditText" />
 
-        <TextView
-            android:id="@+id/emailTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/allerta"
-            android:text="Email"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/mobileNumberEditProfileEditText" />
+            <EditText
+                android:id="@+id/mobileNumberEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:ems="10"
+                android:foregroundTint="#DA00FF"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
+                app:layout_constraintStart_toStartOf="@+id/mobileNumberTextView"
+                app:layout_constraintTop_toBottomOf="@+id/mobileNumberTextView" />
 
-        <EditText
-            android:id="@+id/emailEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:ems="10"
-            android:foregroundTint="#DA00FF"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
-            app:layout_constraintStart_toStartOf="@+id/emailTextView"
-            app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+            <TextView
+                android:id="@+id/emailTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
+                android:text="Email"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/mobileNumberEditProfileEditText" />
 
-        <TextView
-            android:id="@+id/deliveryAddressTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/allerta"
-            android:text="Address (House No., Building, street, Area)"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/emailEditProfileEditText" />
+            <EditText
+                android:id="@+id/emailEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:ems="10"
+                android:foregroundTint="#DA00FF"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
+                app:layout_constraintStart_toStartOf="@+id/emailTextView"
+                app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
 
-        <EditText
-            android:id="@+id/addressEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
-            app:layout_constraintStart_toStartOf="@+id/deliveryAddressTextView"
-            app:layout_constraintTop_toBottomOf="@+id/deliveryAddressTextView" />
+            <TextView
+                android:id="@+id/deliveryAddressTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/allerta"
+                android:text="Address (House No., Building, street, Area)"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/emailEditProfileEditText" />
 
-        <TextView
-            android:id="@+id/cityTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/allerta"
-            android:text="@string/city"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/addressEditProfileEditText" />
+            <EditText
+                android:id="@+id/addressEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
+                app:layout_constraintStart_toStartOf="@+id/deliveryAddressTextView"
+                app:layout_constraintTop_toBottomOf="@+id/deliveryAddressTextView" />
 
-        <EditText
-            android:id="@+id/userCityEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:drawableTint="#FF0057"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/cityTextView"
-            app:layout_constraintTop_toBottomOf="@+id/cityTextView"
-            app:layout_constraintWidth_percent="0.42" />
+            <TextView
+                android:id="@+id/cityTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/city"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/addressEditProfileEditText" />
 
-        <TextView
-            android:id="@+id/stateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/allerta"
-            android:text="State"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/userStateEditProfileEditText"
-            app:layout_constraintTop_toTopOf="@+id/cityTextView" />
+            <EditText
+                android:id="@+id/userCityEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:drawableTint="#FF0057"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/cityTextView"
+                app:layout_constraintTop_toBottomOf="@+id/cityTextView"
+                app:layout_constraintWidth_percent="0.42" />
 
-        <EditText
-            android:id="@+id/userStateEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stateTextView"
-            app:layout_constraintWidth_percent="0.42" />
+            <TextView
+                android:id="@+id/stateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allerta"
+                android:text="State"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/userStateEditProfileEditText"
+                app:layout_constraintTop_toTopOf="@+id/cityTextView" />
 
-        <TextView
-            android:id="@+id/pinCodeTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/allerta"
-            android:text="@string/pin_code"
-            android:textColor="@color/colorTextView"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/userCityEditProfileEditText" />
+            <EditText
+                android:id="@+id/userStateEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stateTextView"
+                app:layout_constraintWidth_percent="0.42" />
 
-        <EditText
-            android:id="@+id/userPinCodeEditProfileEditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorEditTexxt"
-            android:ems="10"
-            android:foregroundTint="#DA00FF"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
-            app:layout_constraintStart_toStartOf="@+id/pinCodeTextView"
-            app:layout_constraintTop_toBottomOf="@+id/pinCodeTextView" />
+            <TextView
+                android:id="@+id/pinCodeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/pin_code"
+                android:textColor="@color/colorTextView"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/userCityEditProfileEditText" />
 
-        <Button
-            android:id="@+id/saveAddressButtonEditProfile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="76dp"
-            android:background="@drawable/my_button"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="Save Address"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.542"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userPinCodeEditProfileEditText"
-            app:layout_constraintWidth_percent="0.7" />
+            <EditText
+                android:id="@+id/userPinCodeEditProfileEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorEditTexxt"
+                android:ems="10"
+                android:foregroundTint="#DA00FF"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@+id/changeNameEditProfileEditText"
+                app:layout_constraintStart_toStartOf="@+id/pinCodeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/pinCodeTextView" />
 
-        <ProgressBar
-            android:id="@+id/editProfileProgressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/saveAddressButtonEditProfile" />
+            <Button
+                android:id="@+id/saveAddressButtonEditProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:background="@drawable/my_button"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="Save Address"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.542"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userPinCodeEditProfileEditText"
+                app:layout_constraintWidth_percent="0.7" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Change Address"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ProgressBar
+                android:id="@+id/editProfileProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saveAddressButtonEditProfile" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Edit Profile"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

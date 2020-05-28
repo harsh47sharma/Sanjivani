@@ -28,6 +28,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,10 +56,12 @@ public class SearchDrugActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     CollectionReference drugCollectionReference;
     FirebaseFirestore db;
-    ConstraintLayout mUploadPrescriptionConstraintLayout;
+    ConstraintLayout mUploadPrescriptionConstraintLayout, mSearchDrugConstraintLayout;
 
     SpeechRecognizer mSpeechRecognizer;
     Intent mSpeechRecognizerIntent;
+
+    Button mViewAllResultsButton;
 
     List<MedInfo> medInfoArrayList;
 
@@ -71,11 +74,35 @@ public class SearchDrugActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_drug);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         searchBoxEditText = findViewById(R.id.searchBoxEditText);
         recyclerView = findViewById(R.id.searchActivityRecyclerView);
         mUploadPrescriptionConstraintLayout = findViewById(R.id.uploadPrescriptionConstraintLayout);
+        mViewAllResultsButton = findViewById(R.id.viewAllResultsButton);
+        mSearchDrugConstraintLayout = findViewById(R.id.searchDrugConstraintLayout);
+
+        mSearchDrugConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarSearchBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchDrugActivity.this, NavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarSearchCartImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchDrugActivity.this, CartActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         drugCollectionReference = db.collection("drugInfoDB");
@@ -100,7 +127,7 @@ public class SearchDrugActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!editable.toString().isEmpty()){
+                if (!editable.toString().isEmpty()) {
                     setAdapter(editable.toString());
                 }
             }
@@ -111,8 +138,8 @@ public class SearchDrugActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 final int DRAWABLE_RIGHT = 2;
 
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (searchBoxEditText.getRight() - searchBoxEditText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (searchBoxEditText.getRight() - searchBoxEditText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         getSpeechInput();
                         return false;
                     }
@@ -135,7 +162,7 @@ public class SearchDrugActivity extends AppCompatActivity {
         });
     }
 
-    private void getSpeechInput(){
+    private void getSpeechInput() {
 
         mSpeechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
@@ -143,37 +170,34 @@ public class SearchDrugActivity extends AppCompatActivity {
         mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         mSpeechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        if(mSpeechRecognizerIntent.resolveActivity(getPackageManager()) != null) {
+        if (mSpeechRecognizerIntent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(mSpeechRecognizerIntent, 10);
-        }
-        else {
+        } else {
             Toast.makeText(SearchDrugActivity.this, "Your device doesn't support speech recognition", Toast.LENGTH_LONG).show();
         }
     }
 
-    private void pickImage(){
+    private void pickImage() {
         CropImage.activity().start(this);
     }
-
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode){
+        switch (requestCode) {
             case 10:
-                if(data != null){
+                if (data != null) {
                     Log.d("text rec", "im in");
                     ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     searchBoxEditText.setText(matches.get(0));
                     break;
-                }
-                else {
+                } else {
                     Toast.makeText(SearchDrugActivity.this, "Something went wrong Please try again", Toast.LENGTH_LONG).show();
                 }
             case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE:
-                if(data != null){
+                if (data != null) {
                     CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
                     imageUri = result.getUri();
@@ -182,8 +206,7 @@ public class SearchDrugActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
-                else {
+                } else {
                     Toast.makeText(SearchDrugActivity.this, "Something went wrong Please try again", Toast.LENGTH_LONG).show();
                 }
         }
@@ -191,12 +214,12 @@ public class SearchDrugActivity extends AppCompatActivity {
     }
 
     private void detectTextFromImage() throws IOException {
-        final FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFilePath(getApplicationContext() ,imageUri);
+        final FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFilePath(getApplicationContext(), imageUri);
         FirebaseVisionTextRecognizer firebaseVisionTextRecognizer = FirebaseVision.getInstance().getOnDeviceTextRecognizer();
         firebaseVisionTextRecognizer.processImage(firebaseVisionImage).addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
             @Override
             public void onSuccess(FirebaseVisionText firebaseVisionText) {
-                for (FirebaseVisionText.TextBlock block: firebaseVisionText.getTextBlocks()) {
+                for (FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
                     String blockText = block.getText();
                     searchBoxEditText.setText(blockText.toLowerCase());
                 }
@@ -209,7 +232,7 @@ public class SearchDrugActivity extends AppCompatActivity {
         });
     }
 
-    private void setAdapter(final String stringSearchedByUser){
+    private void setAdapter(final String stringSearchedByUser) {
 
 
         drugCollectionReference.get()
@@ -220,12 +243,13 @@ public class SearchDrugActivity extends AppCompatActivity {
                         medInfoArrayList.clear();
                         recyclerView.removeAllViews();
 
-                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
 
-                            if(medInfo.getMedName().contains(stringSearchedByUser.toLowerCase())){
+                            if (medInfo.getMedName().contains(stringSearchedByUser.toLowerCase())) {
                                 medInfoArrayList.add(medInfo);
                                 mUploadPrescriptionConstraintLayout.setVisibility(View.INVISIBLE);
+                                mViewAllResultsButton.setVisibility(View.VISIBLE);
                             }
                         }
 
@@ -238,15 +262,22 @@ public class SearchDrugActivity extends AppCompatActivity {
                                 Intent intent = new Intent(SearchDrugActivity.this, DrugInformationActivity.class);
                                 intent.putExtra("items_object", medInfoArrayList.get(position));
                                 startActivity(intent);
+                                finish();
                             }
                         });
                     }
                 });
     }
 
+    public void onBackPressed() {
+        Intent intent = new Intent(SearchDrugActivity.this, NavigationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void checkPermission() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            if(!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED)) {
                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.parse("package: " + getPackageName()));
                 startActivity(intent);

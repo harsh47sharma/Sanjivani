@@ -14,44 +14,40 @@
 
         <activity
             android:name=".OrderInformationActivity"
-            android:label="Order Information"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity
             android:name=".MyOrdersActivity"
-            android:label="My Orders"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
         <activity
             android:name=".UploadPrescriptionActivity"
-            android:label="Upload Prescription"
+            android:theme="@style/AppTheme.NoActionBar"
             />
 
         <activity android:name=".AdminActivity"/>
 
         <activity
             android:name=".DeliveryDetailsActivity"
-            android:label="Change Address"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".PlaceOrderActivity"
             />
         <activity
             android:name=".PlaceOrderActivity"
-            android:label="Place Order"
-            android:parentActivityName=".CartActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".SearchDrugActivity"
-            android:label="Search Durg"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".NavigationActivity" />
         <activity
             android:name=".CartActivity"
-            android:label="Cart"
             android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".NavigationActivity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".DrugInformationActivity"
-            android:label="Drug Information"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".SearchDrugActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".NavigationActivity"
             android:label=""
@@ -59,13 +55,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings"
-            android:parentActivityName=".NavigationActivity" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".EditProfileActivity"
-            android:label="Edit Profile"
-            android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".NavigationActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".CaptureUserInformation"
             android:windowSoftInputMode="stateHidden"

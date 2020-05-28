@@ -2,10 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchDrugConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.collection.sanjivani.SearchDrugActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/searchBoxEditText"
@@ -26,7 +35,7 @@
         app:layout_constraintEnd_toStartOf="@+id/getTextfromImageView"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
@@ -37,8 +46,23 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchBoxEditText"
         app:srcCompat="@drawable/camera_icon" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchActivityRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/recycler_view_items_bg"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewAllResultsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/uploadPrescriptionConstraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/uploadPrescriptionConstraintLayout"
@@ -98,7 +122,7 @@
             android:fontFamily="@font/allerta"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="Upload Now"
+            android:text="Upload"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -106,24 +130,8 @@
             app:layout_constraintHeight_percent="0.45" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchActivityRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/recycler_view_items_bg"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uploadPrescriptionConstraintLayout" />
-
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/viewAllResultsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -133,6 +141,7 @@
         android:text="View All Results"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,14 +12,10 @@
         android:id="@+id/imageView4"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/drug_icon" />
 
     <TextView
@@ -65,10 +61,10 @@
         android:id="@+id/cartItemAddQuantityImageButton"
         android:layout_width="32dp"
         android:layout_height="28dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/add_button_bg"
         app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemPriceTV"
         app:srcCompat="@drawable/add_icon_final" />
 
     <ImageView
@@ -96,29 +92,18 @@
 
     <ImageView
         android:id="@+id/cartItemDeleteImageButton"
-        android:layout_width="43dp"
-        android:layout_height="33dp"
+        android:layout_width="32dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/cartItemRemoveQuantityImageButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintTop_toTopOf="@+id/cartItemRemoveQuantityImageButton"
         app:srcCompat="@drawable/recycle_bin" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mfg: Rpg LIfe Science Ltd"
-        android:textSize="13sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
-        app:layout_constraintTop_toBottomOf="@+id/cartItemPriceTV" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
-        android:layout_height="58dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/cartItemDeleteImageButton"
         app:layout_constraintEnd_toStartOf="@+id/cartItemDeleteImageButton"
@@ -129,11 +114,11 @@
         android:id="@+id/imageView8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.262"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.85"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintWidth_percent="0.9"
         app:srcCompat="@drawable/divider_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

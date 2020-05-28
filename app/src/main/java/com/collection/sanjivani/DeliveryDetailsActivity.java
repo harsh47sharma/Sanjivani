@@ -2,12 +2,14 @@ package com.collection.sanjivani;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,6 +22,7 @@ import java.util.Map;
 
 public class DeliveryDetailsActivity extends AppCompatActivity {
 
+    ConstraintLayout mDeliveryDetailsConstraintLayout;
     EditText mUserAddress;
     EditText mUserCity, mUserState, mUserPinCode;
     ProgressBar mProgressBar;
@@ -30,7 +33,8 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_details);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mDeliveryDetailsConstraintLayout = findViewById(R.id.deliveryDetailsConstraintLayout);
 
         mUserAddress = findViewById(R.id.deliveryAddressEditText);
         mUserCity = findViewById(R.id.deliveryUserCityEditText);
@@ -38,6 +42,20 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
         mUserPinCode = findViewById(R.id.deliveryUserPinCodeEditText);
 
         mProgressBar = findViewById(R.id.editProfileProgressBar);
+
+        mDeliveryDetailsConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarDeliveryDetailsBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DeliveryDetailsActivity.this, PlaceOrderActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
 
@@ -102,6 +120,7 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
                         Intent intent = new Intent(DeliveryDetailsActivity.this, PlaceOrderActivity.class);
                         intent.putExtra("total_payable", totalAmount);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -115,5 +134,6 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(DeliveryDetailsActivity.this, PlaceOrderActivity.class);
         startActivity(intent);
+        finish();
     }
 }

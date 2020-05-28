@@ -3,6 +3,7 @@ package com.collection.sanjivani;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +44,7 @@ import java.util.Map;
 
 public class PlaceOrderActivity extends AppCompatActivity {
 
+    ConstraintLayout mPlaceOrderConstraintLayout;
     TextView mTotalAmountTV;
     TextView mUserAddressTextView, mUserNameTextView, mUserPhoneNumberTextView, mUserEmailTextView;
     TextView mUserCityTextView, mUserState_PinCodeTextView;
@@ -66,9 +69,10 @@ public class PlaceOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_order);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RadioButton radioButton = findViewById(R.id.cashOnDeliveryRadioButton);
         radioButton.setChecked(true);
+
+        mPlaceOrderConstraintLayout = findViewById(R.id.placeOrderConstraintLayout);
 
         mTotalAmountTV = findViewById(R.id.totalAmountTV);
         mUserNameTextView = findViewById(R.id.userNameTextView);
@@ -77,9 +81,22 @@ public class PlaceOrderActivity extends AppCompatActivity {
         mUserAddressTextView = findViewById(R.id.userAddressTextView);
         mUserCityTextView = findViewById(R.id.userCityTextView);
         mUserState_PinCodeTextView = findViewById(R.id.userState_PinCodeTextView);
-
-
         mPlaceOrderPB = findViewById(R.id.placeOrderPB);
+
+        mPlaceOrderConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarPlaceOrderBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PlaceOrderActivity.this, CartActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         db = FirebaseFirestore.getInstance();
         documentReference = db.collection("users").document(userID);
@@ -109,6 +126,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 intent.putExtra("total_payable", totalAmount);
                 startActivity(intent);
                 mTotalAmountTV.setText(String.valueOf(totalAmount));
+                finish();
             }
         });
 
@@ -155,6 +173,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent1 = new Intent(PlaceOrderActivity.this, MyOrdersActivity.class);
                         startActivity(intent1);
+                        finish();
                     }
                 })
                 .setNegativeButton("continue shopping", new DialogInterface.OnClickListener() {
@@ -162,6 +181,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent1 = new Intent(PlaceOrderActivity.this, NavigationActivity.class);
                         startActivity(intent1);
+                        finish();
                     }
                 });
         AlertDialog alertDialog1 = builder1.create();
@@ -300,7 +320,9 @@ public class PlaceOrderActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(PlaceOrderActivity.this, CartActivity.class);
         startActivity(intent);
+        finish();
     }
+
     public String getTime(){
         String time = java.text.DateFormat.getTimeInstance().format(new Date());
         return time;

@@ -2,57 +2,260 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/uploadPrescriptionConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEE"
     tools:context="com.collection.sanjivani.UploadPrescriptionActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar_upload_prescription" />
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true">
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/allerta"
+                android:text="Prescription Guide"
+                android:textColor="@color/colorTextView"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/constrain_layout_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/allerta"
+                    android:text="Upload Prescription"
+                    android:textColor="@color/colorTextView"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/allerta"
+                    android:text="Please upload image of valid prescription from your doctor"
+                    android:textColor="@color/addressColor"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView31"
+                    app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+                <ImageView
+                    android:id="@+id/uploadButton"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/gray_round_background"
+                    android:paddingStart="21dp"
+                    android:paddingEnd="21dp"
+                    app:layout_constraintEnd_toStartOf="@+id/chooseFileButton"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20"
+                    app:srcCompat="@drawable/ic_camera_icon_upload_prescription" />
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/allerta"
+                    android:text="Camera"
+                    android:textColor="@color/uploadPrescriptionTextColor"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/uploadButton"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="@+id/uploadButton"
+                    app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
+
+                <ImageView
+                    android:id="@+id/chooseFileButton"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/gray_round_background"
+                    android:paddingStart="21dp"
+                    android:paddingEnd="21dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/uploadButton"
+                    app:layout_constraintTop_toTopOf="@+id/uploadButton"
+                    app:srcCompat="@drawable/ic_gallery_image" />
+
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/allerta"
+                    android:text="Gallery"
+                    android:textColor="@color/uploadPrescriptionTextColor"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/chooseFileButton"
+                    app:layout_constraintStart_toStartOf="@+id/chooseFileButton"
+                    app:layout_constraintTop_toBottomOf="@+id/chooseFileButton" />
+
+                <ImageView
+                    android:id="@+id/dividerLineImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView33"
+                    app:layout_constraintWidth_percent="0.9"
+                    app:srcCompat="@drawable/divider_line" />
+
+                <ImageView
+                    android:id="@+id/uploadImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="@string/splash_screen_heading"
+                    android:maxHeight="100dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerLineImageView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imageView24"
+                android:layout_width="0dp"
+                android:layout_height="340dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView35"
+                app:srcCompat="@drawable/prescription_image" />
+
+            <ProgressBar
+                android:id="@+id/uploadImageProgressBar"
+                style="?android:attr/progressBarStyleInverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView24" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/allerta"
+                android:text="Upload clear prescription images"
+                android:textColor="@color/addressColor"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView26"
+                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/allerta"
+                android:text="Below mentioned points should be part of valid prescription"
+                android:textColor="@color/addressColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView36"
+                app:layout_constraintTop_toBottomOf="@+id/textView36"
+                app:layout_constraintWidth_percent="0.8" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView36"
+                app:layout_constraintStart_toStartOf="@+id/textView34"
+                app:layout_constraintTop_toTopOf="@+id/textView36"
+                app:layout_constraintVertical_bias="0.57"
+                app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView35"
+                app:layout_constraintStart_toStartOf="@+id/imageView26"
+                app:layout_constraintTop_toTopOf="@+id/textView35"
+                app:layout_constraintVertical_bias="0.225"
+                app:srcCompat="@drawable/ic_brightness_1_black_24dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
     <Button
-        android:id="@+id/chooseFileButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="choose from gallery"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/my_button"
+        android:fontFamily="@font/allerta"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="Next"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/uploadImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:contentDescription="@string/splash_screen_heading"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188" />
-
-    <ProgressBar
-        android:id="@+id/uploadImageProgressBar"
-        style="?android:attr/progressBarStyleInverse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
-
-    <Button
-        android:id="@+id/uploadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="upload prescription"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintWidth_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

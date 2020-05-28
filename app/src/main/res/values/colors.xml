@@ -21,6 +21,15 @@
     <color name="availableColor">#48FF00</color>
     <color name="priceColor">#3F51B5</color>
 
-    <color name="appBarColor">#883FD9</color>
+    <color name="appBarColor">#A452FE</color>
+    <color name="vectorsColor">#5B5B5B</color>
+
+    <color name="pinViewBgColor">#ECF0F3</color>
+    <color name="galaryBgColor">#ECF0F3</color>
+
+    <color name="addressColor">#7F7F7F</color>
+    <color name="uploadPrescriptionTextColor">#545454</color>
+
+    <color name="cartBadgeColor">#FF7B00</color>
 
 </resources>

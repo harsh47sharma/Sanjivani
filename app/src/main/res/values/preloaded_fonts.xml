@@ -8,6 +8,9 @@
         <item>@font/cairo</item>
         <item>@font/cairo_semibold</item>
         <item>@font/open_sans</item>
+        <item>@font/raleway_medium</item>
+        <item>@font/raleway_semibold</item>
+        <item>@font/raleway_thin</item>
         <item>@font/varela_round</item>
     </array>
 </resources>

@@ -3,6 +3,7 @@ package com.collection.sanjivani;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +32,7 @@ public class OrderInformationActivity extends AppCompatActivity {
     TextView mOrderInfoId, mOrderInfoStatus, mOrderInfoTotalAmount, mOrderInfoDate, mOrderInfoTime;
     TextView mOrderInfoUserName, mOrderInfoUserEmail, mOrderInfoUserPhoneNumber, mOrderInfoUserAddress, mOrderInfoUserCity;
     TextView mOrderInfoUserState, mOrderInfoUserPinCode;
+    ConstraintLayout mOrderInfoConstraintLayout;
 
     FirebaseFirestore db;
     DocumentReference mDocumentReference;
@@ -52,6 +54,8 @@ public class OrderInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_information);
 
+        mOrderInfoConstraintLayout = findViewById(R.id.orderInfoConstraintLayout);
+
         mOrderInfoId = findViewById(R.id.orderInfoId);
         mOrderInfoStatus = findViewById(R.id.orderInfoStatus);
         mOrderInfoTotalAmount = findViewById(R.id.orderInfoTotalAmount);
@@ -67,6 +71,29 @@ public class OrderInformationActivity extends AppCompatActivity {
         mOrderInfoUserPinCode = findViewById(R.id.orderInfoUserPinCode);
 
         mRecyclerView = findViewById(R.id.orderInfoItemRecyclerView);
+
+        mOrderInfoConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarOrderInfoBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderInformationActivity.this, MyOrdersActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarOrderInfoSearchImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderInformationActivity.this, SearchDrugActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         mOrdersArrayList = new ArrayList<>();
 
@@ -112,6 +139,7 @@ public class OrderInformationActivity extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
                 Intent intent = new Intent(OrderInformationActivity.this, MyOrdersActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -153,6 +181,12 @@ public class OrderInformationActivity extends AppCompatActivity {
                         Toast.makeText(OrderInformationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(OrderInformationActivity.this, MyOrdersActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void setOrderItemList(){

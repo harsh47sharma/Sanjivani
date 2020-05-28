@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentResolver;
@@ -44,9 +45,12 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
 
     final static int PICK_IMAGE_REQUEST = 1;
 
-    Button mChooseImageButton;
-    Button mUploadImageButton;
+    ImageView mChooseImageButton;
+    ImageView mUploadImageButton;
     ImageView mImageView;
+    ImageView mDividerlineImageVIew;
+    ConstraintLayout mUploadPrescriptionConstraintLayout;
+
     ProgressBar mProgressBar;
 
     public Uri mImageUri;
@@ -67,9 +71,35 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_prescription);
 
         mChooseImageButton = findViewById(R.id.chooseFileButton);
+        mDividerlineImageVIew = findViewById(R.id.dividerLineImageView);
         mUploadImageButton = findViewById(R.id.uploadButton);
         mImageView = findViewById(R.id.uploadImageView);
         mProgressBar = findViewById(R.id.uploadImageProgressBar);
+        mUploadPrescriptionConstraintLayout = findViewById(R.id.uploadPrescriptionConstraintLayout);
+
+        mUploadPrescriptionConstraintLayout.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        findViewById(R.id.appBarUploadPrescriptionBackImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UploadPrescriptionActivity.this, NavigationActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        findViewById(R.id.appBarUploadPrescriptionSearchImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UploadPrescriptionActivity.this, SearchDrugActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         userID = FirebaseAuth.getInstance().getUid();
 
         mStorageReference = FirebaseStorage.getInstance().getReference("uploads");
@@ -79,6 +109,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
         mChooseImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mDividerlineImageVIew.setVisibility(View.VISIBLE);
                 openFileChooser();
             }
         });
@@ -91,6 +122,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
                         setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                mDividerlineImageVIew.setVisibility(View.VISIBLE);
                                 uploadImage();
                                 mProgressBar.setVisibility(View.VISIBLE);
                             }
@@ -133,6 +165,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(UploadPrescriptionActivity.this, NavigationActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -205,4 +238,12 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
             }
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UploadPrescriptionActivity.this, NavigationActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
