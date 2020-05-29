@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -138,6 +139,7 @@ public class CartActivity extends AppCompatActivity {
                             mCartItemPriceArrayList.add(Float.parseFloat(cartInfo.getMedPrice()));
                             mCartArrayList.add(cartInfo);
                         }
+                        setCartBadge();
                         checkIsCartEmpty();
                         calculateFinalAmount(mCartItemPriceArrayList, mCartItemCountArrayList);
                         setTotalPayableTV();
@@ -199,6 +201,13 @@ public class CartActivity extends AppCompatActivity {
                         });
                     }
                 });
+    }
+
+    public void setCartBadge(){
+            SharedPreferences sharedPref = getSharedPreferences("appCartBadge", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("cart_badge", String.valueOf(mCartArrayList.size()));
+        editor.apply();
     }
 
     public void calculateFinalAmount(List<Float> price, List<Integer> itemCount) {

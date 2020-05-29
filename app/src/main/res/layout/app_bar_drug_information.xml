@@ -53,13 +53,13 @@
         app:srcCompat="@drawable/cart_icon_white" />
 
     <TextView
-        android:id="@+id/cartBadgeTextView"
+        android:id="@+id/drugInfoCartBadgeTextView"
         android:layout_width="21dp"
         android:layout_height="21dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/cart_badge"
         android:gravity="center"
-        android:text="99"
+        android:text="0"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"

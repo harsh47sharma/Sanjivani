@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +31,8 @@ public class MyOrdersActivity extends AppCompatActivity {
     OrderAdapter mOrdersAdapter;
     RecyclerView.LayoutManager mLayoutManager;
 
+    TextView mCartBadgeTextView;
+
     String userID;
 
     FirebaseFirestore db;
@@ -42,6 +46,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         mOrdersArrayList = new ArrayList<>();
         mOrdersRecyclerView = findViewById(R.id.ordersRecyclerView);
         mMyOrdersConstraintLayout = findViewById(R.id.myOrdersConstraintLayout);
+        mCartBadgeTextView = findViewById(R.id.myOrdersCartBadgeTextView);
 
         mMyOrdersConstraintLayout.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
@@ -101,7 +106,7 @@ public class MyOrdersActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             OrderInfo orderInfo = documentSnapshot.toObject(OrderInfo.class);
                             mOrdersArrayList.add(orderInfo);
                         }
@@ -118,5 +123,19 @@ public class MyOrdersActivity extends AppCompatActivity {
                         });
                     }
                 });
+    }
+
+    private void getCartBadge() {
+        SharedPreferences sharedPreferences = getSharedPreferences("appCartBadge", MODE_PRIVATE);
+        String value = sharedPreferences.getString("cart_badge", "");
+        mCartBadgeTextView.setText(value);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCartBadge();
+
     }
 }

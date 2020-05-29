@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ public class SearchDrugAdapter extends RecyclerView.Adapter<SearchDrugAdapter.Se
 
     public interface OnMedClickListener {
         void onMedClick(int position);
+        void onAddToCartClick(int position);
     }
 
     public void setOnMedClickListener(OnMedClickListener medListener){
@@ -28,6 +30,7 @@ public class SearchDrugAdapter extends RecyclerView.Adapter<SearchDrugAdapter.Se
    static class SearchViewHolder extends RecyclerView.ViewHolder{
 
         TextView nameTextView, priceTextView, availabilityTextView;
+        ImageView addToCartImageView;
 
         private SearchViewHolder(@NonNull View itemView, final OnMedClickListener medListener) {
             super(itemView);
@@ -35,6 +38,7 @@ public class SearchDrugAdapter extends RecyclerView.Adapter<SearchDrugAdapter.Se
             nameTextView = itemView.findViewById(R.id.nameTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
             availabilityTextView = itemView.findViewById(R.id.availabilityTextView);
+            addToCartImageView = itemView.findViewById(R.id.addToCartImageButton);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -42,6 +46,16 @@ public class SearchDrugAdapter extends RecyclerView.Adapter<SearchDrugAdapter.Se
                     if(medListener != null){
                         int position = getAdapterPosition();
                         medListener.onMedClick(position);
+                    }
+                }
+            });
+
+            addToCartImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(medListener != null){
+                        int position = getAdapterPosition();
+                        medListener.onAddToCartClick(position);
                     }
                 }
             });

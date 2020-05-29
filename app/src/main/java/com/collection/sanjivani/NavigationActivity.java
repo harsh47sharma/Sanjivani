@@ -2,6 +2,7 @@ package com.collection.sanjivani;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -38,7 +39,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     Toolbar mToolbar;
-    TextView mNameTextView;
+    TextView mNameTextView, mCartBadgeTextView;
     TextView mEmailTextView;
     TextView mPhoneNumberTextView;
     Boolean isBackPressedTwice = false;
@@ -70,6 +71,8 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         mNavItemRecyclerView = findViewById(R.id.navItemRecyclerView);
         mNav2ItemRecyclerView = findViewById(R.id.nav2ItemRecyclerView);
+        mCartBadgeTextView = findViewById(R.id.navPageCartBadgeTextView);
+
 
         db = FirebaseFirestore.getInstance();
 
@@ -251,6 +254,20 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
         return true;
     }
+    private void getCartBadge(){
+        SharedPreferences sharedPreferences = getSharedPreferences("appCartBadge", MODE_PRIVATE);
+        String value = sharedPreferences.getString("cart_badge","");
+        mCartBadgeTextView.setText(value);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCartBadge();
+
+    }
+
     @Override
     public void onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){

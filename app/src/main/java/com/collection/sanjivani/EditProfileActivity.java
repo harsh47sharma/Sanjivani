@@ -30,7 +30,6 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mNameET = findViewById(R.id.changeNameEditProfileEditText);
         mEmailET = findViewById(R.id.emailEditProfileEditText);

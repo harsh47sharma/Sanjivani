@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import java.util.List;
 
 public class OrderInformationActivity extends AppCompatActivity {
 
-    TextView mOrderInfoId, mOrderInfoStatus, mOrderInfoTotalAmount, mOrderInfoDate, mOrderInfoTime;
+    TextView mOrderInfoId, mOrderInfoStatus, mOrderInfoTotalAmount, mOrderInfoDate, mOrderInfoTime, mCartBadgeTextView;
     TextView mOrderInfoUserName, mOrderInfoUserEmail, mOrderInfoUserPhoneNumber, mOrderInfoUserAddress, mOrderInfoUserCity;
     TextView mOrderInfoUserState, mOrderInfoUserPinCode;
     ConstraintLayout mOrderInfoConstraintLayout;
@@ -39,8 +40,6 @@ public class OrderInformationActivity extends AppCompatActivity {
 
     String userID;
     String orderId;
-
-    float itemTotal = 0;
 
     RecyclerView mRecyclerView;
     OrderInfoItemAdapter mOrderInfoItemAdapter;
@@ -69,6 +68,7 @@ public class OrderInformationActivity extends AppCompatActivity {
         mOrderInfoUserCity = findViewById(R.id.orderInfoUserCity);
         mOrderInfoUserState = findViewById(R.id.orderInfoUserState);
         mOrderInfoUserPinCode = findViewById(R.id.orderInfoUserPinCode);
+        mCartBadgeTextView = findViewById(R.id.orderInfoCartBadgeTextView);
 
         mRecyclerView = findViewById(R.id.orderInfoItemRecyclerView);
 
@@ -107,7 +107,6 @@ public class OrderInformationActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-
         setOrderInfo();
         setUserInfo();
 
@@ -132,16 +131,16 @@ public class OrderInformationActivity extends AppCompatActivity {
 
     }
 
-    private void cancelOrder(){
+    private void cancelOrder() {
         mDocumentReference.collection("userOrders").document(orderId).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Intent intent = new Intent(OrderInformationActivity.this, MyOrdersActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Intent intent = new Intent(OrderInformationActivity.this, MyOrdersActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
     }
 
     private void setOrderInfo() {
@@ -156,12 +155,13 @@ public class OrderInformationActivity extends AppCompatActivity {
             mOrderInfoTime.setText(orderInfo.getOrderTime());
         }
     }
-    private void setUserInfo(){
+
+    private void setUserInfo() {
         mDocumentReference.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()){
+                        if (documentSnapshot.exists()) {
                             mOrderInfoUserName.setText(documentSnapshot.getString("UserName"));
                             mOrderInfoUserPhoneNumber.setText(documentSnapshot.getString("UserPhoneNumber"));
                             mOrderInfoUserEmail.setText(documentSnapshot.getString("UserEmail"));
@@ -169,8 +169,7 @@ public class OrderInformationActivity extends AppCompatActivity {
                             mOrderInfoUserCity.setText(documentSnapshot.getString("UserCity"));
                             mOrderInfoUserState.setText(documentSnapshot.getString("UserState"));
                             mOrderInfoUserPinCode.setText(documentSnapshot.getString("UserPinCode"));
-                        }
-                        else{
+                        } else {
                             Toast.makeText(OrderInformationActivity.this, "User Details not found", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -189,14 +188,14 @@ public class OrderInformationActivity extends AppCompatActivity {
         finish();
     }
 
-    private void setOrderItemList(){
+    private void setOrderItemList() {
 
         mDocumentReference.collection("userOrders").document(orderId).collection("userOrderItems")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             OrderInfo orderInfo = documentSnapshot.toObject(OrderInfo.class);
                             mOrdersArrayList.add(orderInfo);
                         }
@@ -205,5 +204,19 @@ public class OrderInformationActivity extends AppCompatActivity {
                         mRecyclerView.setAdapter(mOrderInfoItemAdapter);
                     }
                 });
+    }
+
+    private void getCartBadge() {
+        SharedPreferences sharedPreferences = getSharedPreferences("appCartBadge", MODE_PRIVATE);
+        String value = sharedPreferences.getString("cart_badge", "");
+        mCartBadgeTextView.setText(value);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCartBadge();
+
     }
 }

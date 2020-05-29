@@ -24,7 +24,7 @@
         <menu>
             <item
                 android:id="@+id/nav_my_orders"
-                android:icon="@drawable/nav_logout_icon"
+                android:icon="@drawable/my_order_icon"
                 android:title="My Orders" />
         </menu>
     </item>

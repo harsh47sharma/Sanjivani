@@ -80,7 +80,7 @@
                 app:srcCompat="@drawable/cart_icon_white" />
 
             <TextView
-                android:id="@+id/cartBadgeTextView"
+                android:id="@+id/navPageCartBadgeTextView"
                 android:layout_width="21dp"
                 android:layout_height="21dp"
                 android:layout_marginEnd="8dp"

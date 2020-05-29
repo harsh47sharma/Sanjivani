@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +40,7 @@ public class DrugInformationActivity extends AppCompatActivity {
     TextView mMedAvailabilityTextView;
     TextView mMedQuantityTextView;
     TextView mItemCountTextView;
+    TextView mCartBadgeTextView;
     Boolean doesExists = false;
 
     String mMedName, mMedPrice, mMedQuantity, mMedAvailability, mMedDescription;
@@ -61,6 +63,7 @@ public class DrugInformationActivity extends AppCompatActivity {
         mItemCountTextView = findViewById(R.id.itemCountTextVIew);
         mDrugInfoConstraintLayout = findViewById(R.id.drugInfoConstraintLayout);
         mAppBarDrugInfoTextView = findViewById(R.id.appBarDrugInfoTextView);
+        mCartBadgeTextView = findViewById(R.id.drugInfoCartBadgeTextView);
 
         db = FirebaseFirestore.getInstance();
         cartCollectionReference = db.collection("users");
@@ -143,6 +146,13 @@ public class DrugInformationActivity extends AppCompatActivity {
 
     }
 
+    private void getCartBadge(){
+        SharedPreferences sharedPreferences = getSharedPreferences("appCartBadge", MODE_PRIVATE);
+        String value = sharedPreferences.getString("cart_badge","");
+        mCartBadgeTextView.setText(value);
+
+    }
+
     private void addItemCount(){
         if(mItemCount >= 10){
             Toast.makeText(DrugInformationActivity.this, "Cannot add any more item", Toast.LENGTH_LONG).show();
@@ -208,6 +218,12 @@ public class DrugInformationActivity extends AppCompatActivity {
         mMedPriceTextView.setText(mMedPrice);
         mMedAvailabilityTextView.setText(mMedAvailability);
         mMedQuantityTextView.setText(mMedQuantity);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCartBadge();
     }
 
     @Override

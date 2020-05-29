@@ -2,6 +2,7 @@ package com.collection.sanjivani;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -35,6 +38,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -47,8 +51,10 @@ import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class SearchDrugActivity extends AppCompatActivity {
 
@@ -57,6 +63,7 @@ public class SearchDrugActivity extends AppCompatActivity {
     CollectionReference drugCollectionReference;
     FirebaseFirestore db;
     ConstraintLayout mUploadPrescriptionConstraintLayout, mSearchDrugConstraintLayout;
+    TextView mCartBadgeTextView;
 
     SpeechRecognizer mSpeechRecognizer;
     Intent mSpeechRecognizerIntent;
@@ -80,6 +87,7 @@ public class SearchDrugActivity extends AppCompatActivity {
         mUploadPrescriptionConstraintLayout = findViewById(R.id.uploadPrescriptionConstraintLayout);
         mViewAllResultsButton = findViewById(R.id.viewAllResultsButton);
         mSearchDrugConstraintLayout = findViewById(R.id.searchDrugConstraintLayout);
+        mCartBadgeTextView = findViewById(R.id.searchDrugCartBadgeTextView);
 
         mSearchDrugConstraintLayout.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
@@ -264,6 +272,22 @@ public class SearchDrugActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }
+
+                            @Override
+                            public void onAddToCartClick(final int position) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(SearchDrugActivity.this);
+                                builder.setMessage("Add this item to cart?").
+                                        setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                addThisItemToCart(position);
+                                            }
+                                        })
+                                        .setNegativeButton("no", null);
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+
+                            }
                         });
                     }
                 });
@@ -273,6 +297,38 @@ public class SearchDrugActivity extends AppCompatActivity {
         Intent intent = new Intent(SearchDrugActivity.this, NavigationActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void addThisItemToCart(int position){
+        final String userId = FirebaseAuth.getInstance().getUid();
+        final Map<String, Object> addItemToCartObject = new HashMap<>();
+        addItemToCartObject.put("medName", medInfoArrayList.get(position).getMedName());
+        addItemToCartObject.put("medPrice", medInfoArrayList.get(position).getMedPrice());
+        addItemToCartObject.put("medQuantity", medInfoArrayList.get(position).getMedQuantity());
+        addItemToCartObject.put("medItemCount", "1");
+
+        db.collection("users").document(userId).collection("userCart")
+                .document(medInfoArrayList.get(position).getMedName()).set(addItemToCartObject)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(SearchDrugActivity.this, "Item added to cart", Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void getCartBadge(){
+        SharedPreferences sharedPreferences = getSharedPreferences("appCartBadge", MODE_PRIVATE);
+        String value = sharedPreferences.getString("cart_badge","");
+        mCartBadgeTextView.setText(value);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getCartBadge();
+
     }
 
     private void checkPermission() {
