@@ -19,6 +19,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,20 +37,33 @@
             android:isScrollContainer="true">
 
             <TextView
+                android:id="@+id/changeAddressTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/allerta"
+                android:text="Change Address"
+                android:textColor="@color/itemNameColor"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/deliveryAddressTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="64dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/allerta"
                 android:text="Address (House No., Building, street, Area)"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/changeAddressTextView" />
 
             <EditText
                 android:id="@+id/deliveryAddressEditText"
@@ -68,7 +85,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="State"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/deliveryAddressTextView"
                 app:layout_constraintTop_toBottomOf="@+id/deliveryAddressEditText" />
 
@@ -92,7 +109,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="@string/city"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/deliveryUserCityEditText"
                 app:layout_constraintTop_toTopOf="@+id/stateTextView" />
 
@@ -117,7 +134,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="@string/pin_code"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/stateTextView"
                 app:layout_constraintTop_toBottomOf="@+id/deliveryUserStateEditText" />
 
@@ -137,7 +154,7 @@
                 android:id="@+id/saveAddressButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
+                android:layout_marginTop="80dp"
                 android:background="@drawable/my_button"
                 android:fontFamily="@font/allerta"
                 android:paddingLeft="8dp"
@@ -156,8 +173,8 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

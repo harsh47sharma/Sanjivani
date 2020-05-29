@@ -9,7 +9,10 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/app_bar_settings" />
+        layout="@layout/app_bar_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="0dp"

@@ -46,7 +46,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
     final static int PICK_IMAGE_REQUEST = 1;
 
     ImageView mChooseImageButton;
-    ImageView mUploadImageButton;
+    Button mUploadButton;
     ImageView mImageView;
     ImageView mDividerlineImageVIew;
     ConstraintLayout mUploadPrescriptionConstraintLayout;
@@ -72,7 +72,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
 
         mChooseImageButton = findViewById(R.id.chooseFileButton);
         mDividerlineImageVIew = findViewById(R.id.dividerLineImageView);
-        mUploadImageButton = findViewById(R.id.uploadButton);
+        mUploadButton = findViewById(R.id.uploadButton);
         mImageView = findViewById(R.id.uploadImageView);
         mProgressBar = findViewById(R.id.uploadImageProgressBar);
         mUploadPrescriptionConstraintLayout = findViewById(R.id.uploadPrescriptionConstraintLayout);
@@ -114,7 +114,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
             }
         });
 
-        mUploadImageButton.setOnClickListener(new View.OnClickListener() {
+        mUploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UploadPrescriptionActivity.this);

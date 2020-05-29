@@ -17,16 +17,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="0dp"
-            android:background="@drawable/app_bar_gradient">
+            android:layout_height="wrap_content"
+            android:background="@drawable/app_bar_gradient"
+            android:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/nav_menu_icon"
@@ -36,11 +36,11 @@
                 android:id="@+id/appBarTitleNavPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
+                android:fontFamily="@font/basic"
                 android:text="Sanjivani"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
-                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -67,33 +67,38 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.782" />
 
             <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="12dp"
+                android:id="@+id/appBarNavCartImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintHeight_percent="0.23"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="@+id/toolbar"
+                app:layout_constraintWidth_percent="0.1"
                 app:srcCompat="@drawable/cart_icon_white" />
 
             <TextView
                 android:id="@+id/navPageCartBadgeTextView"
-                android:layout_width="21dp"
-                android:layout_height="21dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
                 android:background="@drawable/cart_badge"
                 android:gravity="center"
                 android:text="99"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/appBarNavCartImageView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.100000024" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

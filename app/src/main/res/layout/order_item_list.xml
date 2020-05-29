@@ -4,91 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
-    android:paddingBottom="25dp">
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoItemMedPrice"
+        app:layout_constraintWidth_percent="0.9"
+        app:srcCompat="@drawable/divider_line" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/orderInfoItemMedPrice"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/orderInfoItemMedName"
+        app:srcCompat="@drawable/drug_icon" />
 
     <TextView
         android:id="@+id/orderInfoItemMedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/allerta"
         android:text="Complan refill powder chocolate"
-        android:textColor="#000000"
-        android:textSize="14sp"
+        android:textColor="@color/itemNameColor"
+        android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/orderInfoItemMedPrice"
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="500.00"
-        android:textColor="#626262"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toTopOf="@+id/textView19" />
+        android:layout_marginTop="2dp"
+        android:text="QTY  "
+        android:textColor="@color/addressColor"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/orderInfoItemMedName"
+        app:layout_constraintTop_toBottomOf="@+id/orderInfoItemMedName" />
 
     <TextView
         android:id="@+id/orderInfoItemMedCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2"
-        android:textColor="#626262"
-        android:textSize="16sp"
+        android:textColor="@color/addressColor"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <TextView
-        android:id="@+id/orderInfoItemTotal"
+        android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="1000.00"
-        android:textColor="@color/priceColor"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/textView25"
-        app:layout_constraintTop_toTopOf="@+id/textView25" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="52dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drug_icon" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.9"
-        app:srcCompat="@drawable/divider_line" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="QTY  "
-        android:textColor="#626262"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintStart_toStartOf="@+id/orderInfoItemMedName" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  =  "
-        android:textColor="#626262"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/orderInfoItemMedPrice"
+        android:text="  X  "
+        android:textColor="@color/addressColor"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/orderInfoItemMedCount"
         app:layout_constraintTop_toTopOf="@+id/orderInfoItemMedCount" />
 
     <TextView
@@ -96,19 +77,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rs_symbol"
-        android:textColor="#626262"
-        android:textSize="16sp"
+        android:textColor="@color/addressColor"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toTopOf="@+id/textView23" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/orderInfoItemMedPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  X  "
-        android:textColor="#626262"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/orderInfoItemMedCount"
+        android:layout_marginStart="4dp"
+        android:text="500.00"
+        android:textColor="@color/addressColor"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  =  "
+        android:textColor="@color/addressColor"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/orderInfoItemMedPrice"
         app:layout_constraintTop_toTopOf="@+id/orderInfoItemMedCount" />
 
     <TextView
@@ -117,7 +109,19 @@
         android:layout_height="wrap_content"
         android:text="@string/rs_symbol"
         android:textColor="@color/priceColor"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/orderInfoItemTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="1000.00"
+        android:textColor="@color/priceColor"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/textView25"
+        app:layout_constraintTop_toTopOf="@+id/textView25" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,6 @@ public class DrugInformationActivity extends AppCompatActivity {
 
     ConstraintLayout mDrugInfoConstraintLayout;
     TextView mMedNameTextView;
-    TextView mAppBarDrugInfoTextView;
     TextView mMedDescriptionTextView;
     TextView mMedPriceTextView;
     TextView mMedAvailabilityTextView;
@@ -62,8 +61,7 @@ public class DrugInformationActivity extends AppCompatActivity {
         mMedQuantityTextView = findViewById(R.id.infoPageMedQuantityTextView);
         mItemCountTextView = findViewById(R.id.itemCountTextVIew);
         mDrugInfoConstraintLayout = findViewById(R.id.drugInfoConstraintLayout);
-        mAppBarDrugInfoTextView = findViewById(R.id.appBarDrugInfoTextView);
-        mCartBadgeTextView = findViewById(R.id.drugInfoCartBadgeTextView);
+       mCartBadgeTextView = findViewById(R.id.drugInfoCartBadgeTextView);
 
         db = FirebaseFirestore.getInstance();
         cartCollectionReference = db.collection("users");
@@ -213,7 +211,6 @@ public class DrugInformationActivity extends AppCompatActivity {
 
     private void populateMedInfo() {
         mMedNameTextView.setText(mMedName);
-        mAppBarDrugInfoTextView.setText(mMedName);
         mMedDescriptionTextView.setText(mMedDescription);
         mMedPriceTextView.setText(mMedPrice);
         mMedAvailabilityTextView.setText(mMedAvailability);

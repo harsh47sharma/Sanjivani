@@ -43,9 +43,9 @@
                 android:fontFamily="@font/allerta"
                 android:text="Name"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/EditProfileTextView" />
 
             <EditText
                 android:id="@+id/changeNameEditProfileEditText"
@@ -60,17 +60,19 @@
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
-            <EditText
+            <TextView
                 android:id="@+id/editText2"
                 android:layout_width="50dp"
-                android:layout_height="40dp"
+                android:layout_height="0dp"
                 android:background="@drawable/pin_view_bg"
                 android:ems="10"
+                android:gravity="center"
                 android:hint="+91"
                 android:inputType="phone"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColorHint="#000000"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@+id/mobileNumberEditProfileEditText"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toTopOf="@+id/mobileNumberEditProfileEditText" />
@@ -84,7 +86,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="Mobile Number"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/editText2"
                 app:layout_constraintTop_toBottomOf="@+id/changeNameEditProfileEditText" />
 
@@ -108,7 +110,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="Email"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/mobileNumberEditProfileEditText" />
 
@@ -133,7 +135,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="Address (House No., Building, street, Area)"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/emailEditProfileEditText" />
@@ -157,7 +159,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="@string/city"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/addressEditProfileEditText" />
 
@@ -182,7 +184,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="State"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/userStateEditProfileEditText"
                 app:layout_constraintTop_toTopOf="@+id/cityTextView" />
 
@@ -207,7 +209,7 @@
                 android:fontFamily="@font/allerta"
                 android:text="@string/pin_code"
                 android:textColor="@color/colorTextView"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/userCityEditProfileEditText" />
 
@@ -254,13 +256,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/saveAddressButtonEditProfile" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/EditProfileTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:fontFamily="@font/allerta"
                 android:text="Edit Profile"
-                android:textColor="#000000"
-                android:textSize="24sp"
+                android:textColor="@color/itemNameColor"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

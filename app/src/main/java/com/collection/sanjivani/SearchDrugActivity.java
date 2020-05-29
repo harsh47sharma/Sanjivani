@@ -68,8 +68,6 @@ public class SearchDrugActivity extends AppCompatActivity {
     SpeechRecognizer mSpeechRecognizer;
     Intent mSpeechRecognizerIntent;
 
-    Button mViewAllResultsButton;
-
     List<MedInfo> medInfoArrayList;
 
     Uri imageUri;
@@ -85,7 +83,6 @@ public class SearchDrugActivity extends AppCompatActivity {
         searchBoxEditText = findViewById(R.id.searchBoxEditText);
         recyclerView = findViewById(R.id.searchActivityRecyclerView);
         mUploadPrescriptionConstraintLayout = findViewById(R.id.uploadPrescriptionConstraintLayout);
-        mViewAllResultsButton = findViewById(R.id.viewAllResultsButton);
         mSearchDrugConstraintLayout = findViewById(R.id.searchDrugConstraintLayout);
         mCartBadgeTextView = findViewById(R.id.searchDrugCartBadgeTextView);
 
@@ -252,12 +249,11 @@ public class SearchDrugActivity extends AppCompatActivity {
                         recyclerView.removeAllViews();
 
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
+                              MedInfo medInfo = documentSnapshot.toObject(MedInfo.class);
 
                             if (medInfo.getMedName().contains(stringSearchedByUser.toLowerCase())) {
                                 medInfoArrayList.add(medInfo);
                                 mUploadPrescriptionConstraintLayout.setVisibility(View.INVISIBLE);
-                                mViewAllResultsButton.setVisibility(View.VISIBLE);
                             }
                         }
 

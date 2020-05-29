@@ -95,6 +95,15 @@ public class OrderInformationActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.appBarOrderInfoCartImageView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderInformationActivity.this, CartActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         mOrdersArrayList = new ArrayList<>();
 
         userID = FirebaseAuth.getInstance().getUid();

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     android:background="@color/appBarColor"
     android:elevation="2dp">
 
@@ -21,51 +22,59 @@
         android:id="@+id/appBarMyOrdersTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="11dp"
+        android:fontFamily="@font/basic"
         android:text="My Orders"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/appBarMyOrdersBackImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/appBarMyOrdersSearchImageView"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/appBarMyOrdersCartImageView"
+        app:layout_constraintHeight_percent="0.55"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.1"
         app:srcCompat="@drawable/search_icon_white_app_bar" />
 
     <ImageView
         android:id="@+id/appBarMyOrdersCartImageView"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.55"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.1"
         app:srcCompat="@drawable/cart_icon_white" />
 
     <TextView
         android:id="@+id/myOrdersCartBadgeTextView"
-        android:layout_width="21dp"
-        android:layout_height="21dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/cart_badge"
         android:gravity="center"
         android:text="0"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintEnd_toEndOf="@+id/appBarMyOrdersCartImageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

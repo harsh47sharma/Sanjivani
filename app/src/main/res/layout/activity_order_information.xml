@@ -21,9 +21,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,19 +41,20 @@
                 android:id="@+id/constraintLayout4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/recycler_view_items_bg"
                 android:paddingBottom="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/orderInfoTickImageView"
-                    android:layout_width="27dp"
-                    android:layout_height="24dp"
+                    android:layout_width="22dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    app:layout_constraintHeight_percent="0.07"
                     app:layout_constraintStart_toStartOf="@+id/imageView15"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/tick_icon_one" />
@@ -66,9 +68,11 @@
                     android:fontFamily="@font/allerta"
                     android:text="Order Placed"
                     android:textColor="@color/colorTextView"
-                    android:textSize="19sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/orderInfoTickImageView"
-                    app:layout_constraintStart_toEndOf="@+id/orderInfoTickImageView" />
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView15"
+                    app:layout_constraintStart_toEndOf="@+id/orderInfoTickImageView"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.44" />
 
                 <ImageView
                     android:id="@+id/imageView15"
@@ -89,8 +93,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="10dp"
                     android:text="ORD1080"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/imageView15"
                     app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
@@ -99,8 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="26 March 2120"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/orderInfoTime"
                     app:layout_constraintTop_toTopOf="@+id/textView15" />
 
@@ -122,8 +126,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Time"
-                    android:textColor="#030303"
-                    android:textSize="18sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoId"
                     app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
@@ -133,8 +137,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="10:12 AM"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageView15"
                     app:layout_constraintTop_toTopOf="@+id/orderInfoTimeTextView" />
 
@@ -144,8 +148,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Delivery Type"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoTimeTextView"
                     app:layout_constraintTop_toBottomOf="@+id/imageView19" />
 
@@ -154,8 +158,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Home Delivery"
-                    android:textColor="#030303"
-                    android:textSize="16sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/orderInfoDate"
                     app:layout_constraintTop_toTopOf="@+id/orderInfoDeliveryTextView" />
 
@@ -188,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Product Order"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoDeliveryTextView"
                     app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
@@ -198,8 +202,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Amount :"
-                    android:textColor="#030303"
-                    android:textSize="18sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/textView22"
                     app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -210,7 +214,7 @@
                     android:layout_marginEnd="8dp"
                     android:text="@string/rs_symbol"
                     android:textColor="@color/priceColor"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/orderInfoTotalAmount"
                     app:layout_constraintEnd_toStartOf="@+id/orderInfoTotalAmount"
                     app:layout_constraintTop_toTopOf="@+id/orderInfoTotalAmount" />
@@ -221,7 +225,7 @@
                     android:layout_height="wrap_content"
                     android:text="1000"
                     android:textColor="@color/priceColor"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/orderDeliveryType"
                     app:layout_constraintTop_toTopOf="@+id/orderInfoAmountTextView" />
 
@@ -231,8 +235,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Date"
-                    android:textColor="#030303"
-                    android:textSize="16sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoTimeTextView"
                     app:layout_constraintTop_toBottomOf="@+id/orderInfoTimeTextView" />
 
@@ -244,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/recycler_view_items_bg"
-                android:paddingBottom="16dp"
+                android:paddingBottom="12dp"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
@@ -253,13 +257,13 @@
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/allerta"
                     android:text="Address Details"
                     android:textColor="@color/colorTextView"
-                    android:textSize="19sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/imageView60"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -278,12 +282,12 @@
                     android:id="@+id/orderInfoUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/allerta"
                     android:text="Hush Sharma"
-                    android:textColor="#5E5E5E"
-                    android:textSize="18sp"
+                    android:textColor="@color/itemNameColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/imageView60"
                     app:layout_constraintTop_toBottomOf="@+id/imageView60" />
 
@@ -293,8 +297,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text="112 C Special Gandhi Nagar"
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoUserName"
                     app:layout_constraintTop_toBottomOf="@+id/orderInfoUserName" />
 
@@ -304,8 +308,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text="Indore"
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoUserAddress"
                     app:layout_constraintTop_toBottomOf="@+id/orderInfoUserAddress" />
 
@@ -315,8 +319,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text=" - "
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/orderInfoUserState"
                     app:layout_constraintTop_toTopOf="@+id/orderInfoUserState" />
 
@@ -326,8 +330,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text="MP"
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoUserCity"
                     app:layout_constraintTop_toBottomOf="@+id/orderInfoUserCity" />
 
@@ -337,8 +341,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text="452001"
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@+id/dashTextView"
                     app:layout_constraintTop_toTopOf="@+id/dashTextView" />
 
@@ -348,8 +352,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text="9009875646"
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoUserState"
                     app:layout_constraintTop_toBottomOf="@+id/dashTextView" />
 
@@ -359,8 +363,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/allerta"
                     android:text="user email"
-                    android:textColor="#727272"
-                    android:textSize="18sp"
+                    android:textColor="@color/addressColor"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="@+id/orderInfoUserPhoneNumber"
                     app:layout_constraintTop_toBottomOf="@+id/orderInfoUserPhoneNumber" />
 
@@ -369,18 +373,29 @@
             <Button
                 android:id="@+id/cancelOrderButton"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/my_button"
+                android:background="#ffffff"
+                android:elevation="0dp"
+                android:fontFamily="@font/allerta"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:text="Cancel Order"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-                app:layout_constraintWidth_percent="0.85" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintWidth_percent="0.98"
+                app:srcCompat="@drawable/divider_line" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -393,8 +408,8 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Order Cart"
-                android:textColor="@color/colorTextView"
-                android:textSize="19sp"
+                android:textColor="@color/itemNameColor"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -403,10 +418,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/orderInfoItemRecyclerView"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="0dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textView4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintHeight_percent="0.27"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

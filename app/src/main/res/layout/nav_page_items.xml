@@ -11,7 +11,7 @@
     android:paddingBottom="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="163dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:background="@drawable/round_boundary_gray"
         android:paddingTop="12dp"
@@ -24,12 +24,16 @@
         <TextView
             android:id="@+id/navPage_itemName"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/allerta"
+            android:maxLines="2"
+            android:minLines="2"
             android:text="Horlicks junior stage 1 powder chocolate"
-            android:textColor="#000000"
-            android:textSize="14sp"
+            android:textColor="#4A4A4A"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView18"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView18"
@@ -42,7 +46,7 @@
             android:layout_marginStart="4dp"
             android:text="200"
             android:textColor="@color/priceColor"
-            android:textSize="16sp"
+            android:textSize="13sp"
             app:layout_constraintStart_toEndOf="@+id/navPage_itemPrice2"
             app:layout_constraintTop_toTopOf="@+id/navPage_itemPrice2" />
 
@@ -50,17 +54,17 @@
             android:id="@+id/navPage_itemPrice2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/rs_symbol"
             android:textColor="@color/priceColor"
-            android:textSize="16sp"
+            android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@+id/navPage_itemName"
             app:layout_constraintTop_toBottomOf="@+id/navPage_itemName" />
 
         <ImageView
             android:id="@+id/imageView14"
-            android:layout_width="89dp"
-            android:layout_height="81dp"
+            android:layout_width="69dp"
+            android:layout_height="61dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

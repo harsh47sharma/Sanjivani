@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,6 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.collection.sanjivani.DrugInformationActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/app_bar_drug_information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -20,20 +28,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="190dp"
-                android:layout_height="159dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.24"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/infoPageMedQuantityTextView"
-                app:layout_constraintVertical_bias="0.068"
-                app:layout_constraintWidth_percent="0.5"
-                app:srcCompat="@drawable/drug_icon" />
 
             <ImageView
                 android:id="@+id/drugInfoAddCountImageButton"
@@ -62,11 +56,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:fontFamily="@font/allerta"
                 android:text="Medicine name"
-                android:textColor="#000000"
-                android:textSize="22sp"
+                android:textColor="@color/itemNameColor"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,8 +72,11 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="12dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
-                android:text="The club isn't the best place to find a lover So the bar is where I go Me and my friends at the table doing shots Drinking fast and then we talk slow Come over and start up a conversation with just me And trust me I'll give it a chance now Take my hand, stop, put Van the Man on the jukebox And then we start to dance, and now I'm singing like Girl, you know I want your love Your love was handmade for somebody like me Come on now, follow my lead I may be crazy, don't mind me Say, boy, let's not talk too much Grab on my waist and put that body on me Come on now, follow my lead Come, come on now, follow my lead I'm in love with the shape of you We push and pull like a magnet do Although my heart is falling too I'm in love with your body And last night you were in…"
+                android:text="The club isn't the best place to find a lover So the bar is where I go Me and my friends at the table doing shots Drinking fast and then we talk slow Come over and start up a conversation with just me And trust me I'll give it a chance now Take my hand, stop, put Van the Man on the jukebox And then we start to dance, and now I'm singing like Girl, you know I want your love Your love was handmade for somebody like me Come on now, follow my lead I may be crazy, don't mind me Say, boy, let's not talk too much Grab on my waist and put that body on me Come on now, follow my lead Come, come on now, follow my lead I'm in love with the shape of you We push and pull like a magnet do Although my heart is falling too I'm in love with your body And last  night you were in…"
+                android:textColor="@color/addressColor"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,25 +91,39 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="Strip of 10 tablets "
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@+id/infoPageMedNameTextView"
                 app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="@+id/infoPageMedNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/infoPageMedNameTextView" />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.28"
+                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/infoPageMedQuantityTextView"
+                app:layout_constraintVertical_bias="0.060000002"
+                app:layout_constraintWidth_percent="0.45"
+                app:srcCompat="@drawable/drug_icon" />
+
             <TextView
                 android:id="@+id/infoPageMedAvailabilityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/allerta"
                 android:text="Availability"
                 android:textColor="@color/availableColor"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.047"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.1" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
                 android:id="@+id/infoPageMedPriceTextView"
@@ -119,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text="1000"
                 android:textColor="@color/priceColor"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.903"
@@ -131,15 +143,12 @@
                 android:id="@+id/infoPageMedPriceTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:text="@string/rs_symbol"
                 android:textColor="@color/priceColor"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.81"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/infoPageMedAvailabilityTextView"
-                app:layout_constraintVertical_bias="0.0" />
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/infoPageMedPriceTextView"
+                app:layout_constraintTop_toTopOf="@+id/infoPageMedPriceTextView" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -171,7 +180,7 @@
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/allerta"
                 android:text="Description"
-                android:textColor="#000000"
+                android:textColor="@color/itemNameColor"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/drugInfoAddCountImageButton"
                 app:layout_constraintTop_toBottomOf="@+id/itemCountTextVIew" />
@@ -190,12 +199,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add_shopping_cart_black_24dp" />
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/app_bar_drug_information"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

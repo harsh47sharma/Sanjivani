@@ -27,9 +27,10 @@
         android:paddingTop="8dp"
         android:paddingBottom="6dp"
         android:text="Order Cart"
-        android:textColor="@color/colorTextView"
-        android:textSize="21sp"
+        android:textColor="@color/itemNameColor"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include" />
 
@@ -67,11 +68,11 @@
             android:id="@+id/cartTotalPayableTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Total amount"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            android:text="100"
+            android:textColor="@color/priceColor"
+            android:textSize="16sp"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView26" />
 
@@ -79,14 +80,13 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:fontFamily="@font/allerta"
             android:text="Total"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textColor="@color/itemNameColor"
+            android:textSize="16sp"
+            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -98,9 +98,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="@string/rs_symbol"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textColor="@color/priceColor"
+            android:textSize="16sp"
+            android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cartTotalPayableTextView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -136,21 +136,11 @@
     <ImageView
         android:id="@+id/imageView22"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/textView30"
         app:layout_constraintStart_toStartOf="@+id/textView30"
         app:layout_constraintTop_toBottomOf="@+id/textView30"
+        app:layout_constraintWidth_percent="0.92"
         app:srcCompat="@drawable/divider_line" />
-
-    <TextView
-        android:id="@+id/itemCountCartTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView30"
-        app:layout_constraintEnd_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toTopOf="@+id/textView30" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
