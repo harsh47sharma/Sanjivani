@@ -62,21 +62,21 @@
         android:id="@+id/cartItemAddQuantityImageButton"
         android:layout_width="22dp"
         android:layout_height="18dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/add_button_bg"
-        app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
-        app:layout_constraintTop_toBottomOf="@+id/cartItemPriceTV"
+        app:layout_constraintBottom_toBottomOf="@+id/cartItemRemoveQuantityImageButton"
+        app:layout_constraintStart_toEndOf="@+id/cartItemRemoveQuantityImageButton"
+        app:layout_constraintTop_toTopOf="@+id/cartItemRemoveQuantityImageButton"
         app:srcCompat="@drawable/add_icon_final" />
 
     <ImageView
         android:id="@+id/cartItemRemoveQuantityImageButton"
         android:layout_width="22dp"
         android:layout_height="18dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/add_button_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/cartItemAddQuantityImageButton"
-        app:layout_constraintStart_toEndOf="@+id/cartItemAddQuantityImageButton"
-        app:layout_constraintTop_toTopOf="@+id/cartItemAddQuantityImageButton"
+        app:layout_constraintStart_toStartOf="@+id/cartItemNameTV"
+        app:layout_constraintTop_toBottomOf="@+id/rsSymbol"
         app:srcCompat="@drawable/remove_icon_final" />
 
     <TextView

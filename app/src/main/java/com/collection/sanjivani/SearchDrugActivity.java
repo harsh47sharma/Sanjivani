@@ -86,11 +86,6 @@ public class SearchDrugActivity extends AppCompatActivity {
         mSearchDrugConstraintLayout = findViewById(R.id.searchDrugConstraintLayout);
         mCartBadgeTextView = findViewById(R.id.searchDrugCartBadgeTextView);
 
-        mSearchDrugConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         findViewById(R.id.appBarSearchBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

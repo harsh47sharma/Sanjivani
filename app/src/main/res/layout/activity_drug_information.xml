@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drugInfoConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     tools:context="com.collection.sanjivani.DrugInformationActivity">
 
     <include
@@ -33,22 +34,19 @@
                 android:id="@+id/drugInfoAddCountImageButton"
                 android:layout_width="27dp"
                 android:layout_height="23dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.041"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                android:layout_marginStart="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/drugInfoReduceCountImageButton"
+                app:layout_constraintStart_toEndOf="@+id/drugInfoReduceCountImageButton"
+                app:layout_constraintTop_toTopOf="@+id/drugInfoReduceCountImageButton"
                 app:srcCompat="@drawable/add_icon_final" />
 
             <ImageView
                 android:id="@+id/drugInfoReduceCountImageButton"
                 android:layout_width="27dp"
                 android:layout_height="23dp"
-                android:layout_marginStart="32dp"
-                app:layout_constraintBottom_toBottomOf="@+id/drugInfoAddCountImageButton"
-                app:layout_constraintStart_toEndOf="@+id/drugInfoAddCountImageButton"
-                app:layout_constraintTop_toTopOf="@+id/drugInfoAddCountImageButton"
-                app:layout_constraintVertical_bias="0.545"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@+id/infoPageMedAvailabilityTextView"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
                 app:srcCompat="@drawable/remove_icon_final" />
 
             <TextView
@@ -182,7 +180,7 @@
                 android:text="Description"
                 android:textColor="@color/itemNameColor"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/drugInfoAddCountImageButton"
+                app:layout_constraintStart_toStartOf="@+id/drugInfoReduceCountImageButton"
                 app:layout_constraintTop_toBottomOf="@+id/itemCountTextVIew" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

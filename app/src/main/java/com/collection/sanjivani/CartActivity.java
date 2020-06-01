@@ -83,11 +83,6 @@ public class CartActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mCartRecyclerView.setLayoutManager(mLayoutManager);
 
-        mConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         //populating cart recycler view
         setAdapter();
 

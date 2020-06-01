@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/header_gradient"
     android:orientation="vertical"
-    android:paddingBottom="20dp"
+    android:fitsSystemWindows="true"
     tools:showIn="@layout/activity_navigation">
 
     <TextView
@@ -42,10 +42,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/allerta"
         android:text="hakdjskaj@gmail.com"
         android:textColor="@color/itemNameColor"
         android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/navHeaderPhoneNumberTextView"
         app:layout_constraintTop_toBottomOf="@+id/navHeaderPhoneNumberTextView" />
 

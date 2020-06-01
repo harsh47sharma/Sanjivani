@@ -89,11 +89,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         mNavItemRecyclerView.setLayoutManager(mLayoutManager);
         mNav2ItemRecyclerView.setLayoutManager(m2LayoutManager);
 
-        mDrawerLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         setNavItemAdapter();
         setNav2ItemAdapter();
         //Setting navigation drawer

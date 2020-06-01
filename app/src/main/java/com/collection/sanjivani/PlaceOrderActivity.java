@@ -83,11 +83,6 @@ public class PlaceOrderActivity extends AppCompatActivity {
         mUserState_PinCodeTextView = findViewById(R.id.userState_PinCodeTextView);
         mPlaceOrderPB = findViewById(R.id.placeOrderPB);
 
-        mPlaceOrderConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         findViewById(R.id.appBarPlaceOrderBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

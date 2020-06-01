@@ -48,11 +48,6 @@ public class MyOrdersActivity extends AppCompatActivity {
         mMyOrdersConstraintLayout = findViewById(R.id.myOrdersConstraintLayout);
         mCartBadgeTextView = findViewById(R.id.myOrdersCartBadgeTextView);
 
-        mMyOrdersConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         findViewById(R.id.appBarMyOrdersBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

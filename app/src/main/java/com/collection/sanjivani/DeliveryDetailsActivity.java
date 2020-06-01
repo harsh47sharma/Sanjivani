@@ -43,11 +43,6 @@ public class DeliveryDetailsActivity extends AppCompatActivity {
 
         mProgressBar = findViewById(R.id.editProfileProgressBar);
 
-        mDeliveryDetailsConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         findViewById(R.id.appBarDeliveryDetailsBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

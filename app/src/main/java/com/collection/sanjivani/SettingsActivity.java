@@ -20,11 +20,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         mSettingsConstraintLayout = findViewById(R.id.settingsConstraintLayout);
 
-        mSettingsConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         findViewById(R.id.appBarSettingsBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -22,6 +25,8 @@ public class EditProfileActivity extends AppCompatActivity {
     EditText mNameET, mEmailET, mAddressET, mCityET, mStateET, mPinCodeET;
     ProgressBar mProgressBar;
     ConstraintLayout mEditProfileConstraintLayout;
+    TextView mMobileNumberTextView;
+    DocumentReference getUserDetails;
 
     FirebaseFirestore db;
     String userID;
@@ -40,10 +45,7 @@ public class EditProfileActivity extends AppCompatActivity {
         mProgressBar = findViewById(R.id.editProfileProgressBar);
         mEditProfileConstraintLayout= findViewById(R.id.editProfileConstraintLayout);
 
-        mEditProfileConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
+        setPhoneNumberTextView();
 
         findViewById(R.id.appBarEditProfileBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +74,28 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setPhoneNumberTextView() {
+        mMobileNumberTextView = findViewById(R.id.mobileNumberEditProfileTextView);
+
+        String userId = FirebaseAuth.getInstance().getUid();
+        db = FirebaseFirestore.getInstance();
+        getUserDetails = db.collection("users").document(userId);
+
+        getUserDetails.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            String userPhoneNumber = documentSnapshot.getString("UserPhoneNumber");
+                            mMobileNumberTextView.setText(userPhoneNumber);
+                        }
+                        else{
+                            Toast.makeText(EditProfileActivity.this, "User Details not found", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     private Boolean onValidationSuccess(String userName, String userEmail, String userAddress, String userCity, String userState, String userPinCode){

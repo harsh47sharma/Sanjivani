@@ -66,11 +66,6 @@ public class DrugInformationActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         cartCollectionReference = db.collection("users");
 
-        mDrugInfoConstraintLayout.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         findViewById(R.id.appBarDrugInfoBackImageView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -35,7 +35,7 @@ public class SearchDrugAdapter extends RecyclerView.Adapter<SearchDrugAdapter.Se
         private SearchViewHolder(@NonNull View itemView, final OnMedClickListener medListener) {
             super(itemView);
 
-            nameTextView = itemView.findViewById(R.id.nameTextView);
+            nameTextView = itemView.findViewById(R.id.userNameTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
             availabilityTextView = itemView.findViewById(R.id.availabilityTextView);
             addToCartImageView = itemView.findViewById(R.id.addToCartImageButton);

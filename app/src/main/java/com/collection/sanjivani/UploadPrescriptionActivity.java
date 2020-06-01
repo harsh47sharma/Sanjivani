@@ -48,7 +48,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
     ImageView mChooseImageButton;
     Button mUploadButton;
     ImageView mImageView;
-    ImageView mDividerlineImageVIew;
+    ImageView mDividerLineImageVIew;
     ConstraintLayout mUploadPrescriptionConstraintLayout;
 
     ProgressBar mProgressBar;
@@ -71,7 +71,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_prescription);
 
         mChooseImageButton = findViewById(R.id.chooseFileButton);
-        mDividerlineImageVIew = findViewById(R.id.dividerLineImageView);
+        mDividerLineImageVIew = findViewById(R.id.dividerLineImageView);
         mUploadButton = findViewById(R.id.uploadButton);
         mImageView = findViewById(R.id.uploadImageView);
         mProgressBar = findViewById(R.id.uploadImageProgressBar);
@@ -109,7 +109,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
         mChooseImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDividerlineImageVIew.setVisibility(View.VISIBLE);
+                mDividerLineImageVIew.setVisibility(View.VISIBLE);
                 openFileChooser();
             }
         });
@@ -122,7 +122,7 @@ public class UploadPrescriptionActivity extends AppCompatActivity {
                         setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                mDividerlineImageVIew.setVisibility(View.VISIBLE);
+                                mDividerLineImageVIew.setVisibility(View.VISIBLE);
                                 uploadImage();
                                 mProgressBar.setVisibility(View.VISIBLE);
                             }
